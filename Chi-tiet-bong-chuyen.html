@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bóng Chuyền THPT Khánh Lâm - Rực Lửa Đam Mê</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === 1. CÀI ĐẶT NỀN LUNG LINH === */
+        body { 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%); 
+            color: #2d3436; 
+            line-height: 1.8; 
+        }
+
+        /* Hiệu ứng hiện dần khi load trang */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { 
+            width: 85%; 
+            max-width: 1000px; 
+            margin: 40px auto; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 50px; 
+            border-radius: 30px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            animation: fadeUp 1s ease-out;
+        }
+
+        /* === 2. NÚT QUAY LẠI CÁCH ĐIỆU === */
+        .btn-back { 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            color: #ff4757; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-10px); color: #2f3542; }
+
+        /* === 3. HEADER NỔI BẬT === */
+        header { text-align: center; margin-bottom: 60px; }
+        
+        .category-badge {
+            background: #ff4757;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        header h1 { 
+            font-family: 'Quicksand', sans-serif;
+            font-size: 48px; 
+            color: #2f3542; 
+            margin: 10px 0; 
+            background: linear-gradient(to right, #ff4757, #ffa502);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .meta { color: #a4b0be; font-size: 14px; font-weight: 600; }
+
+        /* === 4. ĐOẠN VĂN VÀ HÌNH ẢNH LUNG LINH === */
+        .intro-text { 
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px; 
+            color: #57606f; 
+            text-align: center; 
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .intro-text::before, .intro-text::after {
+            content: "“";
+            font-size: 50px;
+            color: #ff4757;
+            opacity: 0.3;
+        }
+
+        .content-paragraph { 
+            font-size: 18px; 
+            margin-bottom: 30px; 
+            text-align: justify; 
+            color: #4b6584;
+        }
+
+        /* Khung ảnh nghệ thuật */
+        .photo-block { 
+            margin: 50px 0; 
+            text-align: center; 
+            transition: 0.5s;
+        }
+        
+        .photo-block img { 
+            width: 100%; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(255, 71, 87, 0.2); 
+            transition: 0.5s;
+        }
+        
+        .photo-block:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .caption { 
+            display: block; 
+            margin-top: 15px; 
+            font-size: 14px; 
+            color: #747d8c; 
+            font-style: italic;
+        }
+
+        /* Grid ảnh phong cách ngẫu nhiên */
+        .photo-grid { 
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Một to một nhỏ */
+            gap: 20px; 
+            margin: 50px 0; 
+        }
+        
+        .photo-grid img { 
+            width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        /* === 5. KẾT BÀI === */
+        .end-mark { 
+            text-align: center; 
+            margin: 80px 0 20px; 
+            color: #ff4757; 
+            font-size: 30px;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="Hoat-dong.html" class="btn-back">← TRANG HOẠT ĐỘNG</a>
+
+        <header>
+            <span class="category-badge">THỂ THAO HỌC ĐƯỜNG</span>
+            <h1>Sức Trẻ Dưới Lưới Cao</h1>
+            <div class="meta">Bản tin: Tổ Thể Dục | Cập nhật ngày: 01/03/2026</div>
+        </header>
+
+        <p class="intro-text">Cháy hết mình với những pha bóng, để thanh xuân không chỉ là những trang sách, mà còn là nhịp đập rộn ràng nơi sân đấu.</p>
+
+        <section class="photo-block">
+            <img src="bong-chuyen-main.png" alt="Giải bóng chuyền">
+            <span class="caption">Toàn cảnh lễ khai mạc giải bóng chuyền nam nữ THPT Khánh Lâm 2026.</span>
+        </section>
+
+        <div class="content-paragraph">
+            Tiếng còi khai cuộc vang lên cũng là lúc bầu không khí tại sân thể thao trường THPT Khánh Lâm bùng nổ. Dưới ánh nắng vàng rực rỡ, những chiến binh trẻ tuổi bước vào sân với ánh mắt rực lửa quyết tâm. Từng bước di chuyển, từng pha phối hợp đều mang theo hy vọng và niềm tự hào của cả một tập thể lớp.
+        </div>
+
+        <section class="photo-grid">
+            <img src="bong-chuyen-1.png" alt="Phối hợp đồng đội">
+            <img src="bong-chuyen-2.png" alt="Phòng thủ">
+        </section>
+        <p style="text-align: center; font-size: 14px; color: #888;">Sự phối hợp nhịp nhàng và những pha cứu bóng lăn xả đầy cảm xúc.</p>
+
+        <div class="content-paragraph">
+            Chúng ta đã được chứng kiến những cú đập bóng uy lực xé tan hàng phòng ngự, những pha chắn bóng bền bỉ và cả những lần bay người cứu bóng không tưởng. Nhưng có lẽ, hình ảnh đẹp nhất không nằm ở điểm số, mà ở cái nắm tay thật chặt sau mỗi pha bóng hỏng, là những lời động viên "Cố lên, mình làm được!" vang vọng khắp sân trường.
+        </div>
+
+        <section class="photo-block">
+            <img src="bong-chuyen-an-mung.png" alt="Ăn mừng chiến thắng">
+            <span class="caption">Niềm vui vỡ òa khi giành được tấm vé vào vòng chung kết kịch tính.</span>
+        </section>
+
+        <div class="content-paragraph">
+            Khi những tia nắng cuối ngày dần tắt, giải đấu cũng khép lại với những giọt nước mắt và nụ cười. Dù thắng hay thua, mỗi học sinh đều đã chiến thắng chính bản thân mình, ghi lại một dấu ấn đậm nét trong hành trình trưởng thành dưới mái trường Khánh Lâm thân yêu. Hẹn gặp lại các bạn ở những mùa giải đầy đam mê phía trước!
+        </div>
+
+        <div class="end-mark">🏐 🏐 🏐</div>
+        <p style="text-align: center; color: #ced4da; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">-- Phóng sự được thực hiện bởi Toi --</p>
+    </div>
+
+</body>
+</html>

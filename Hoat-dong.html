@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hoạt động - Trường THPT Khánh Lâm</title>
+    <style>
+        /* === CÀI ĐẶT CHUNG === */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9fbfd; 
+            color: #333;
+        }
+
+        /* === BANNER NHỎ === */
+        .mini-banner {
+            background-image: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('Trường trang chủ.png');
+            background-size: cover;
+            background-position: center;
+            height: 250px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .mini-banner h1 {
+            color: white;
+            font-size: 40px;
+            margin-top: 60px; 
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* === MENU BONG BÓNG === */
+        .bubble-menu {
+            position: absolute;
+            top: 40px; 
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bubble-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        /* Sáng nút "Hoạt động" vì đang ở trang này */
+        .bubble-menu a.active, .bubble-menu a:hover {
+            background-color: rgba(241, 196, 15, 0.8); 
+            color: #333;
+        }
+
+        /* === BỐ CỤC NỘI DUNG CHÍNH === */
+        .container {
+            width: 85%; 
+            margin: 0 auto; 
+            padding: 40px 0;
+        }
+
+        h2 {
+            color: #5b8c5a; 
+            border-bottom: 2px solid #5b8c5a;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        /* === THƯ VIỆN HOẠT ĐỘNG (GRID DẠNG THẺ) === */
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .activity-img {
+            width: 100%;
+            height: 220px;
+            background-color: #e0efe0;
+            object-fit: cover;
+        }
+
+        .activity-content {
+            padding: 25px;
+        }
+
+        /* Nhãn dán phân loại (Tag) */
+        .badge {
+            display: inline-block;
+            background-color: #f1c40f;
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Đổi màu badge cho đa dạng */
+        .badge.doan { background-color: #3498db; color: white; }
+        .badge.the-thao { background-color: #e74c3c; color: white; }
+        .badge.cau-lac-bo { background-color: #9b59b6; color: white; }
+        .badge.tiep-suc { background-color: #e67e22; color: white;}
+        .badge.tong-ket { background-color: #00cec9; color: white;}
+        .badge.khai-giang { background-color: #8b0000; color: white;}
+
+        .activity-content h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 22px;
+        }
+
+        .activity-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            text-decoration: none;
+            color: #5b8c5a;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: #2c3e50;
+            text-decoration: underline;
+        }
+
+        /* === CHÂN TRANG === */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="mini-banner">
+        <nav class="bubble-menu">
+            <a href="Trang-chu.html#da-vao-trang">Trang chủ</a>
+            <a href="Gioi-thieu.html">Giới thiệu</a>
+            <a href="Hoat-dong.html" class="active">Hoạt động</a>
+            <a href="Tuyen-sinh.html">Tuyển sinh</a>
+            <a href="Lien-he.html">Liên hệ</a>
+        </nav>
+        <h1>Phong trào & Ngoại khóa</h1>
+    </header>
+
+    <main class="container">
+        <h2>Nhịp sống tại THPT Khánh Lâm</h2>
+        
+        <div class="activity-grid">
+        
+            <article class="activity-card">
+                <img src="nhận giải.png" alt="Hội thao trường" class="activity-img">
+                <div class="activity-content">
+                    <span class="badge the-thao">Thể thao</span>
+                    <h3>Giải Bóng chuyền Nam sinh cấp trường</h3>
+                    <p>Giải đấu thường niên nhằm rèn luyện sức khỏe và tinh thần đoàn kết. Những trận cầu nảy lửa thu hút sự cổ vũ nhiệt tình của toàn trường.</p>
+                   <a href="Chi-tiet-bong-chuyen.html" class="read-more">Xem thêm chi tiết ➔</a>
+                </div>
+            </article>
+
+            <article class="activity-card">
+                <img src="văn nghệ.png" alt="Văn nghệ 20/11" class="activity-img">
+                <div class="activity-content">
+                    <span class="badge">Sự kiện thường niên</span>
+                    <h3>Hội diễn Văn nghệ 20/11</h3>
+                    <p>Những tiết mục múa hát đặc sắc, được đầu tư công phu từ các lớp để tri ân thầy cô giáo nhân ngày Nhà giáo Việt Nam.</p>
+                    <a href="chi-tiet-hoi-dien-van-nghe.html" class="read-more">Xem thêm chi tiết ➔</a>
+                </div>
+            </article>
+
+            <article class="activity-card">
+                <img src="doan-truong.png" alt="Hoạt động Đoàn" class="activity-img">
+                <div class="activity-content">
+                    <span class="badge doan">Hoạt động Đoàn</span>
+                    <h3>Công Tác Đoàn & Phong Trào Thanh Niên</h3>
+                    <p>Phát huy tinh thần xung kích, sáng tạo của tuổi trẻ qua các chiến dịch tình nguyện, lớp bồi dưỡng cảm tình Đoàn và các hoạt động rèn luyện kỹ năng.</p>
+                    <a href="Chi-tiet-doan-thanh-nien.html" class="read-more">Xem thêm chi tiết ➔</a>
+                </div>
+            </article>
+
+            <article class="activity-card">
+                <img src="tiep-suc.jpg" alt="Tiếp sức mùa thi" class="activity-img">
+                <div class="activity-content">
+                    <span class="badge tiep-suc">Tiếp sức mùa thi</span>
+                    <h3>Chiến Dịch Tiếp Sức Mùa Thi</h3>
+                    <p>Những bóng áo tình nguyện túc trực tại cổng trường, mang theo nước mát và những lời chúc may mắn tiếp thêm sức mạnh cho sĩ tử.</p>
+                    <a href="Chi-tiet-tiep-suc.html" class="read-more">Xem thêm chi tiết ➔</a>
+                </div>
+            </article>
+
+            <article class="activity-card">
+                <img src="tong-ket.png" alt="Tổng kết" class="activity-img">
+                <div class="activity-content">
+                    <span class="badge tong-ket">Tổng kết</span>
+                    <h3>Lễ Tổng Kết Năm Học</h3>
+                    <p>Giây phút nhìn lại chặng đường nỗ lực với bảng vàng thành tích đáng tự hào và những giọt nước mắt lưu luyến chia tay của học sinh khối 12.</p>
+                    <a href="Chi-tiet-tong-ket.html" class="read-more">Xem thêm chi tiết ➔</a>
+                </div>
+            </article>
+
+            <article class="activity-card">
+                <img src="khai_giang.png" alt="Khai giảng" class="activity-img">
+                <div class="activity-content">
+                    <span class="badge khai-giang">Khai giảng</span>
+                    <h3>Lễ Khai Giảng Năm Học Mới 2025-2026</h3>
+                    <p>Tiếng trống trường vang vọng cùng cờ hoa rực rỡ, chính thức mở ra một hành trình tri thức mới đầy hứa hẹn cho thầy và trò Khánh Lâm.</p>
+                    <a href="Chi-tiet-khai-giang.html" class="read-more">Xem thêm chi tiết ➔</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Bản quyền thuộc về Trường THPT Khánh Lâm.</p>
+    </footer>
+
+</body>
+</html>

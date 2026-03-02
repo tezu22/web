@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lễ Khai Giảng - THPT Khánh Lâm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === 1. NỀN LUNG LINH TÔNG MÀU MÙA THU === */
+        body { 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            /* Nền màu trắng kem pha chút hồng đào nhẹ nhàng của buổi sáng */
+            background: linear-gradient(135deg, #fdfbfb 0%, #fcedea 100%); 
+            color: #2d3436; 
+            line-height: 1.8; 
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { 
+            width: 85%; 
+            max-width: 1000px; 
+            margin: 40px auto; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 50px; 
+            border-radius: 30px; 
+            box-shadow: 0 20px 60px rgba(139, 0, 0, 0.08); /* Đổ bóng đỏ thẫm nhẹ */
+            backdrop-filter: blur(15px);
+            animation: fadeUp 1s ease-out;
+        }
+
+        /* === 2. NÚT QUAY LẠI === */
+        .btn-back { 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            color: #c0392b; /* Đỏ thẫm */
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-10px); color: #e67e22; }
+
+        /* === 3. HEADER TRANG TRỌNG === */
+        header { text-align: center; margin-bottom: 60px; }
+        
+        .category-badge {
+            background: linear-gradient(to right, #c0392b, #e74c3c);
+            color: white;
+            padding: 6px 25px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+            text-transform: uppercase;
+        }
+
+        header h1 { 
+            font-size: 46px; 
+            color: #2f3542; 
+            margin: 10px 0; 
+            /* Gradient chữ Đỏ và Vàng cam */
+            background: linear-gradient(to right, #8b0000, #e67e22);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .meta { color: #95a5a6; font-size: 14px; font-weight: 600; }
+
+        /* === 4. NỘI DUNG VÀ HÌNH ẢNH === */
+        .intro-text { 
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px; 
+            color: #c0392b; 
+            text-align: center; 
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .intro-text::before, .intro-text::after {
+            content: "“";
+            font-size: 60px;
+            color: #f1c40f; /* Dấu ngoặc kép màu vàng rực */
+            opacity: 0.4;
+        }
+
+        .content-paragraph { 
+            font-size: 19px; 
+            margin-bottom: 30px; 
+            text-align: justify; 
+            color: #34495e;
+        }
+
+        /* Khung ảnh chính */
+        .photo-block { 
+            margin: 50px 0; 
+            text-align: center; 
+        }
+        
+        .photo-block img { 
+            width: 100%; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(192, 57, 43, 0.15); 
+            transition: 0.5s;
+        }
+        
+        .photo-block:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 25px 60px rgba(230, 126, 34, 0.2);
+        }
+
+        .caption { 
+            display: block; 
+            margin-top: 15px; 
+            font-size: 14px; 
+            color: #7f8c8d; 
+            font-style: italic;
+        }
+
+        /* Grid ảnh 2 cột */
+        .photo-grid { 
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 25px; 
+            margin: 50px 0; 
+        }
+        
+        .photo-grid img { 
+            width: 100%; 
+            height: 380px; 
+            object-fit: cover; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        /* === 5. KẾT BÀI === */
+        .end-mark { 
+            text-align: center; 
+            margin: 80px 0 20px; 
+            color: #c0392b; 
+            font-size: 28px;
+            letter-spacing: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="Hoat-dong.html" class="btn-back">← QUAY LẠI TRANG HOẠT ĐỘNG</a>
+
+        <header>
+            <span class="category-badge">KHỞI ĐẦU MỚI</span>
+            <h1>Tiếng Trống Tự Hào</h1>
+            <div class="meta">Bản tin: Ban Giám Hiệu | Ngày hội đến trường: 05/09</div>
+        </header>
+
+        <p class="intro-text">Tiếng trống trường đã điểm, gọi mùa thu thức giấc, mang theo bao ước mơ và hoài bão của tuổi học trò cất cánh bay cao.</p>
+
+        <section class="photo-block">
+            <img src="khai-giang-main.png" alt="Toàn cảnh khai giảng">
+            <span class="caption">Sân trường THPT Khánh Lâm rực rỡ cờ hoa trong buổi sáng mùa thu khai trường.</span>
+        </section>
+
+        <div class="content-paragraph">
+            Trong không khí dịu mát của những ngày đầu thu tháng 9, trường THPT Khánh Lâm lại long trọng tổ chức Lễ Khai giảng năm học mới. Từ sáng sớm, sân trường đã ngập tràn sắc trắng tinh khôi của những tà áo dài, sắc xanh của đồng phục và những nụ cười rạng rỡ. Đối với các em học sinh khối 10, đây là ngày đầu tiên bỡ ngỡ bước chân vào ngôi trường mới, còn với các anh chị khối 12, đây lại là lễ khai giảng cuối cùng đầy lưu luyến của thời áo trắng.
+        </div>
+
+        <section class="photo-grid">
+            <img src="chao-co.png" alt="Học sinh chào cờ">
+            <img src="danh-trong.png" alt="Thầy Hiệu trưởng đánh trống">
+        </section>
+        <p style="text-align: center; font-size: 14px; color: #7f8c8d;">Giây phút trang nghiêm khi chào cờ và khoảnh khắc thiêng liêng khi tiếng trống khai trường vang lên.</p>
+
+        <div class="content-paragraph">
+            Khoảnh khắc thiêng liêng và xúc động nhất chính là lúc Thầy Hiệu trưởng đọc diễn văn khai giảng và gióng lên hồi trống đầu tiên. Từng nhịp trống vang vọng khắp không gian như đang thôi thúc, truyền thêm sức mạnh và niềm tin cho hàng ngàn học sinh. Đó là lời hứa về một năm học rèn đức, luyện tài, thi đua dạy tốt - học tốt của toàn thể cán bộ giáo viên và học sinh nhà trường.
+        </div>
+
+        <section class="photo-block">
+            <img src="tha-bong.png" alt="Thả bóng bay">
+            <span class="caption">Những chùm bóng bay mang theo ước mơ bay lên bầu trời xanh thăm thẳm.</span>
+        </section>
+
+        <div class="content-paragraph">
+            Lễ khai giảng khép lại trong niềm hân hoan và tràn đầy hy vọng. Một chặng đường mới đã chính thức bắt đầu. Chúc cho thầy và trò trường THPT Khánh Lâm sẽ có một năm học gặt hái được thật nhiều thành công, viết tiếp những trang sử vàng tự hào của nhà trường!
+        </div>
+
+        <div class="end-mark">🥁 🌻 🎈</div>
+        <p style="text-align: center; color: #bdc3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 3px;">-- Chào năm học mới --</p>
+    </div>
+
+</body>
+</html>

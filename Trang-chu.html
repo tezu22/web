@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - Trường THPT Khánh Lâm</title>
+    <style>
+        /* === CÀI ĐẶT CHUNG === */
+        html {
+            scroll-behavior: smooth; /* Cuộn trang mượt mà */
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9; 
+        }
+
+        /* === PHẦN MỞ ĐẦU (HERO SECTION) === */
+        /* Phủ một lớp màu đen mờ (0.6) lên trên ảnh nền để làm mờ và nổi bật chữ */
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Trường trang chủ.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 84.08vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative; 
+        }
+
+        /* KHUNG MENU BONG BÓNG 3D */
+        .bubble-menu {
+            position: absolute;
+            top: 40px; /* Cố định khoảng cách từ trên xuống */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bubble-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .bubble-menu a.active, .bubble-menu a:hover {
+            background-color: rgba(241, 196, 15, 0.8); 
+            color: #333;
+            box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* HIỆU ỨNG HIỆN DẦN LÊN (FADE-UP) */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content {
+            animation: fadeUp 1.5s ease-out forwards; 
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* NÚT BẤM "TÌM HIỂU THÊM" */
+        .btn-action {
+            display: inline-block;
+            background-color: #f1c40f; 
+            color: #333;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-5px); 
+            background-color: #ffeaa7; 
+        }
+
+        /* === PHẦN THÔNG TIN NỔI BẬT === */
+        .info-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .info-section h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+        }
+
+        .card {
+            background-color: white;
+            width: 300px;
+            padding: 30px;
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
+            transition: transform 0.3s ease; 
+        }
+
+        .card:hover {
+            transform: translateY(-10px); 
+            border-bottom: 5px solid #5b8c5a; 
+        }
+
+        .card h3 {
+            color: #5b8c5a;
+            font-size: 24px;
+        }
+
+        /* === CHÂN TRANG (FOOTER) === */
+        footer {
+            background-color: #2c3e50; 
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        /* === HIỆU ỨNG MÀN HÌNH CHÀO (CSS THUẦN) === */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* Nền tối sang trọng để làm nổi bật chữ */
+            background: linear-gradient(135deg, #1e272e, #2c3e50); 
+            z-index: 9999; /* Luôn nằm trên cùng mọi thứ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            /* Tổng thời gian 7 giây, sau đó biến mất hoàn toàn */
+            animation: fadeOutIntro 7s forwards; 
+        }
+
+        .intro-text {
+            text-align: center;
+            color: white;
+        }
+
+        .welcome {
+            display: block;
+            font-size: 24px;
+            letter-spacing: 10px;
+            margin-bottom: 10px;
+            color: #f1c40f; /* Màu vàng kim */
+            opacity: 0;
+            /* Chữ Welcome hiện ra mượt mà sau 0.5s */
+            animation: textIn 2s ease forwards 0.5s; 
+        }
+
+        .school-name {
+            display: block;
+            font-size: 65px;
+            font-weight: bold;
+            letter-spacing: 15px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            opacity: 0;
+            /* Chữ KHANH LAM trồi lên sau 1.5s */
+            animation: textIn 2s ease forwards 1.5s; 
+        }
+
+        /* Hiệu ứng chữ từ dưới trồi lên và rõ dần */
+        @keyframes textIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tuyệt chiêu CSS: Mờ dần và "Xuyên thấu" để click được web bên dưới */
+        @keyframes fadeOutIntro {
+            0% { opacity: 1; visibility: visible; }
+            80% { opacity: 1; visibility: visible; } /* Giữ nguyên hiển thị trong 5.6 giây đầu */
+            99% { opacity: 0; visibility: visible; } /* Mờ dần đi */
+            100% { opacity: 0; visibility: hidden; } /* Giây thứ 7: Ẩn hoàn toàn khỏi màn hình */
+        }
+        /* CSS HACK: Giấu màn hình chào nếu link có đuôi #da-vao-trang */
+        #da-vao-trang:target .intro-overlay {
+            display: none !important;
+            animation: none !important;
+        }
+    </style>
+</head>
+<body id="da-vao-trang">
+    <div class="intro-overlay">
+        <div class="intro-text">
+            <span class="welcome">WELCOME TO</span>
+            <span class="school-name">KHANH LAM</span>
+        </div>
+    </div>
+    <header class="hero-section">
+        <nav class="bubble-menu">
+            <a href="Trang-chu.html#da-vao-trang" class="active">Trang chủ</a>
+            <a href="Gioi-thieu.html">Giới thiệu</a>
+            <a href="Hoat-dong.html">Hoạt động</a>
+            <a href="Tuyen-sinh.html">Tuyển sinh</a>
+            <a href="Lien-he.html">Liên hệ</a>
+        </nav>
+
+        <div class="hero-content">
+            <h1>Trường THPT Khánh Lâm</h1>
+            <p>Chào mừng bạn đến với trang web đầu tiên của tôi!</p>
+            <a href="#thong-tin" class="btn-action">Tìm hiểu thêm</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="thong-tin" class="info-section">
+            <h2>Thông Tin Nổi Bật</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Tin Tức</h3>
+                    <p>Cập nhật những thông báo mới nhất về lịch học, sự kiện ngoại khóa và các hoạt động của đoàn trường.</p>
+                </div>
+                <div class="card">
+                    <h3>Tuyển Sinh</h3>
+                    <p>Thông tin chi tiết về chỉ tiêu, điểm chuẩn và hồ sơ xét tuyển vào lớp 10 năm học mới nhất.</p>
+                </div>
+                <div class="card">
+                    <h3>Thành Tích</h3>
+                    <p>Bảng vàng vinh danh các cá nhân, tập thể có thành tích xuất sắc trong học tập và các kỳ thi học sinh giỏi.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Bản quyền thuộc về Trường THPT Khánh Lâm.</p>
+        <p>Địa chỉ: Xã Khánh Lâm, Huyện U Minh | Số điện thoại: 0290 2247 222</p>
+    </footer>
+
+</body>
+</html>

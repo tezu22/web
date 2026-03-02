@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giới thiệu - Trường THPT Khánh Lâm</title>
+    <style>
+        /* === RESET & CƠ BẢN (Tin học 12) === */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9fbfd; 
+            color: #333;
+        }
+
+        /* === 1. BANNER NHỎ Ở TRÊN CÙNG === */
+        .mini-banner {
+            /* Lớp phủ mờ nền như trang chủ */
+            background-image: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('Trường trang chủ.png');
+            background-size: cover;
+            background-position: center;
+            height: 250px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .mini-banner h1 {
+            color: white;
+            font-size: 40px;
+            margin-top: 60px; 
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* KHUNG MENU BONG BÓNG */
+        .bubble-menu {
+            position: absolute;
+            top: 40px; /* Đã đồng bộ 40px với trang chủ */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bubble-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .bubble-menu a.active, .bubble-menu a:hover {
+            background-color: rgba(241, 196, 15, 0.8); 
+            color: #333;
+        }
+
+        /* === 2. BỐ CỤC NỘI DUNG CHÍNH === */
+        .container {
+            width: 80%; 
+            margin: 0 auto; 
+            padding: 40px 0;
+        }
+
+        h2 {
+            color: #5b8c5a; 
+            border-bottom: 2px solid #5b8c5a;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* === 3. PHẦN VỀ TRƯỜNG === */
+        .about-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center; 
+        }
+
+        .about-text {
+            flex: 1; 
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .about-image {
+            flex: 1; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            display: block;
+            width: 100%; 
+            height: auto;
+        }
+
+        /* === 4. PHẦN GIÁO VIÊN === */
+        .teacher-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap; 
+            margin-bottom: 60px;
+        }
+
+        .teacher-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+
+        .avatar-placeholder {
+            width: 120px; height: 120px;
+            background-color: #e0efe0;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+        }
+
+        /* === 5. PHẦN CÁC KHỐI LỚP === */
+        .class-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .class-box {
+            background-color: #2c3e50;
+            color: white;
+            flex: 1;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 5px solid #f1c40f; 
+        }
+
+        /* === CHÂN TRANG === */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        /* === 4.1. PHẦN GIÁO VIÊN BỘ MÔN (Dùng details/summary) === */
+        .department-container {
+            width: 100%;
+            margin: 0 auto 60px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .department-group {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            overflow: hidden; 
+            transition: all 0.3s ease;
+        }
+
+        .department-group summary {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            padding: 20px;
+            cursor: pointer;
+            background-color: #e0efe0; /* Màu nền xanh nhạt đồng bộ với avatar BGH */
+            list-style: none; /* Ẩn mũi tên mặc định */
+            position: relative;
+        }
+
+        /* Tạo mũi tên tam giác tùy chỉnh ở bên phải */
+        .department-group summary::after {
+            content: '▼';
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s;
+            color: #5b8c5a;
+        }
+
+        /* Khi thẻ mở ra, mũi tên xoay ngược lại */
+        .department-group[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .teacher-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Tự động chia cột linh hoạt */
+            gap: 15px;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .teacher-item {
+            background: #f9fbfd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #5b8c5a; /* Điểm nhấn vạch xanh lá ở rìa trái */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+
+        .teacher-item:hover {
+            transform: translateX(5px); /* Đưa chuột vào thẻ nhích sang phải 1 chút */
+            background-color: #f1f5f1;
+        }
+
+        .teacher-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .teacher-subject {
+            font-size: 14px;
+            color: #666;
+        }
+        /* Khung tròn màu xanh bao bên ngoài */
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    
+    border: 4px solid #5b8c5a; /* ĐÂY LÀ KHUNG MÀU XANH */
+    border-radius: 50%;        /* Làm cho khung hình tròn */
+    padding: 3px;              /* Tạo khoảng hở giữa khung xanh và ảnh cho đẹp */
+    background-color: white;   /* Nền trắng nhẹ giữa khung và ảnh */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;          /* Đảm bảo ảnh không tràn ra ngoài khung */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Đổ bóng nhẹ cho lung linh */
+}
+
+/* Định dạng tấm ảnh bên trong */
+.avatar-placeholder img {
+    width: 200%;
+    height: 200%;
+    object-fit: cover;         /* Giúp ảnh không bị méo */
+    border-radius: 50%;        /* Bo tròn cả tấm ảnh */
+}
+/* === CSS MỚI CHO CƠ CẤU LỚP HỌC === */
+        .grade-wrapper {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .grade-title {
+            color: #2c3e50;
+            border-bottom: 2px dashed #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .stream-title {
+            font-size: 16px;
+            color: #666;
+            margin: 15px 0 10px;
+            font-style: italic;
+        }
+
+        .class-grid-detail {
+            display: grid;
+            /* Tự động chia cột linh hoạt, mỗi ô nhỏ nhất 100px */
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+        }
+
+        .class-item {
+            display: block;
+            background-color: #f4f6f9;
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 15px 0;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        /* Hiệu ứng đưa chuột vào Ban T (Tự nhiên - Xanh dương) */
+        .class-item.t-stream:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Hiệu ứng đưa chuột vào Ban X (Xã hội - Cam) */
+        .class-item.x-stream:hover {
+            background-color: #e67e22;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(230, 126, 34, 0.3);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="mini-banner">
+        <nav class="bubble-menu">
+            <a href="Trang-chu.html#da-vao-trang">Trang chủ</a>
+            <a href="Gioi-thieu.html" class="active">Giới thiệu</a>
+            <a href="Hoat-dong.html">Hoạt động</a>
+            <a href="Tuyen-sinh.html">Tuyển sinh</a>
+            <a href="Lien-he.html">Liên hệ</a>
+        </nav>
+        <h1>Giới thiệu về trường</h1>
+    </header>
+
+    <main class="container">
+        
+        <h2>Tự hào THPT Khánh Lâm</h2>
+        <section class="about-section">
+            <div class="about-text">
+                <p>Trường THPT Khánh Lâm, tọa lạc tại vùng đất U Minh giàu truyền thống hiếu học, được thành lập với sứ mệnh thiêng liêng: <strong>"Học để làm người, làm cho dân giàu, nước mạnh"</strong>. Trải qua một bề dày lịch sử hình thành và phát triển, nhà trường không ngừng vươn lên, khẳng định vị thế của mình và tự hào trở thành cái nôi bồi dưỡng nhân tài, đào tạo ra nhiều thế hệ học sinh xuất sắc đóng góp cho quê hương, đất nước.</p>
+                
+                <p>Chúng tôi luôn tâm niệm giáo dục không chỉ là truyền thụ kiến thức mà còn là vun đắp tâm hồn. Vì vậy, nhà trường đặc biệt chú trọng xây dựng một môi trường học tập toàn diện. Cơ sở vật chất ngày càng được đầu tư khang trang, hiện đại với hệ thống phòng học tiêu chuẩn, phòng thực hành được trang bị đầy đủ. Tất cả được bao bọc trong một khuôn viên trường học <em>"xanh - sạch - đẹp"</em>, thân thiện và an toàn, tạo không gian lý tưởng để các em học sinh thỏa sức sáng tạo và rèn luyện.</p>
+
+                <p>Hơn thế nữa, sức mạnh và niềm tự hào lớn nhất của THPT Khánh Lâm chính là đội ngũ cán bộ, giáo viên. Với lòng yêu nghề, sự tận tâm và phương pháp giảng dạy không ngừng đổi mới, mỗi thầy cô không chỉ là người truyền đạt tri thức mà còn là những người lái đò thầm lặng. Thầy cô chính là những điểm tựa vững chắc, luôn đồng hành, thấu hiểu và truyền cảm hứng để những ước mơ, hoài bão của các thế hệ học trò được chắp cánh bay cao, bay xa.</p>
+            </div>
+            
+            <div class="about-image">
+                <img src="hoat-dong.jpg" alt="Sân trường hoạt động" />
+            </div>
+        </section>
+
+        <h2>Đội ngũ Ban Giám Hiệu</h2>
+        <section class="teacher-grid">
+            <div class="teacher-card">
+                        <div class="avatar-placeholder">
+                              <img src="Thay_Dung.png" alt="Thầy Huỳnh Thanh Đúng">
+                  </div>
+                <h3>Huỳnh Thanh Đúng</h3>
+                <p>Hiệu trưởng</p>
+            </div>
+               <div class="teacher-card">
+                        <div class="avatar-placeholder">
+                              <img src="Thay_lang.png" alt="Thầy Nguyễn Chi Lăng">
+                  </div>
+                  <h3>Nguyễn Chi Lăng</h3>
+                 <p>Phó Hiệu trưởng</p>
+                </div>
+             <div class="teacher-card">
+                        <div class="avatar-placeholder">
+                              <img src="Thay_Trang.png" alt="Thầy Dương Văn Trạng">
+                  </div>
+                <h3>Dương Văn Trạng</h3>
+                <p>Phó Hiệu trưởng</p>
+            </div>
+        </section>
+      <h2>Đội ngũ Giáo viên Bộ môn (46 Thầy Cô)</h2>
+        <div class="department-container">
+            
+            <details class="department-group">
+                <summary>Tổ Toán - Tin học (10 Giáo viên)</summary>
+                <div class="teacher-list">
+                    <div class="teacher-item">
+                        <img src="images/thay-x.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Thầy Nguyễn Văn X</div>
+                            <div class="teacher-subject">Tổ trưởng - Môn Toán</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/co-y.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Cô Lê Thị Y</div>
+                            <div class="teacher-subject">Môn Tin học</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/thay-z.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Thầy Trần Văn Z</div>
+                            <div class="teacher-subject">Môn Toán</div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="department-group">
+                <summary>Tổ Khoa học Tự nhiên (12 Giáo viên)</summary>
+                <div class="teacher-list">
+                    <div class="teacher-item">
+                        <img src="images/co-m.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Cô Phạm Thị M</div>
+                            <div class="teacher-subject">Tổ trưởng - Môn Vật lý</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/thay-n.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Thầy Hoàng Văn N</div>
+                            <div class="teacher-subject">Môn Hóa học</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/co-p.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Cô Vũ Thị P</div>
+                            <div class="teacher-subject">Môn Sinh học</div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="department-group">
+                <summary>Tổ Ngữ Văn (8 Giáo viên)</summary>
+                <div class="teacher-list">
+                    <div class="teacher-item">
+                        <img src="images/co-q.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Cô Đinh Thị Q</div>
+                            <div class="teacher-subject">Tổ trưởng - Môn Ngữ Văn</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/thay-r.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Thầy Lý Văn R</div>
+                            <div class="teacher-subject">Môn Ngữ Văn</div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="department-group">
+                <summary>Tổ Khoa học Xã hội (10 Giáo viên)</summary>
+                <div class="teacher-list">
+                    <div class="teacher-item">
+                        <img src="images/thay-s.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Thầy Bùi Văn S</div>
+                            <div class="teacher-subject">Tổ trưởng - Môn Lịch sử</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/co-t.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Cô Trương Thị T</div>
+                            <div class="teacher-subject">Môn Địa lý</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/co-k.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Cô Trần Thị K</div>
+                            <div class="teacher-subject">Môn GDCD</div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+            
+            <details class="department-group">
+                <summary>Tổ Ngoại ngữ - Thể dục (6 Giáo viên)</summary>
+                <div class="teacher-list">
+                    <div class="teacher-item">
+                        <img src="images/co-u.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Cô Ngô Thị U</div>
+                            <div class="teacher-subject">Tổ trưởng - Tiếng Anh</div>
+                        </div>
+                    </div>
+                    <div class="teacher-item">
+                        <img src="images/thay-v.jpg" alt="Avatar" class="teacher-avatar">
+                        <div class="teacher-info">
+                            <div class="teacher-name">Thầy Đặng Văn V</div>
+                            <div class="teacher-subject">Giáo dục Thể chất</div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+
+       
+        <h2>Cơ cấu tổ chức lớp học 2025-2026</h2>
+        
+        <div class="grade-wrapper">
+            <div class="grade-title">Khối 10 (Gồm 8 lớp)</div>
+            
+            <div class="stream-title">Khoa học Tự nhiên</div>
+            <div class="class-grid-detail">
+                <a href="Chi-tiet-10T1.html" class="class-item t-stream">10T1</a>
+                <a href="#" class="class-item t-stream">10T2</a>
+                <a href="#" class="class-item t-stream">10T3</a>
+                <a href="#" class="class-item t-stream">10T4</a>
+            </div>
+
+            <div class="stream-title">Khoa học Xã hội</div>
+            <div class="class-grid-detail">
+                <a href="#" class="class-item x-stream">10X1</a>
+                <a href="#" class="class-item x-stream">10X2</a>
+                <a href="#" class="class-item x-stream">10X3</a>
+                <a href="#" class="class-item x-stream">10X4</a>
+            </div>
+        </div>
+
+        <div class="grade-wrapper">
+            <div class="grade-title">Khối 11 (Gồm 10 lớp)</div>
+            
+            <div class="stream-title">Khoa học Tự nhiên </div>
+            <div class="class-grid-detail">
+                <a href="#" class="class-item t-stream">11T1</a>
+                <a href="#" class="class-item t-stream">11T2</a>
+                <a href="#" class="class-item t-stream">11T3</a>
+                <a href="#" class="class-item t-stream">11T4</a>
+            </div>
+
+            <div class="stream-title">Khoa học Xã hội </div>
+            <div class="class-grid-detail">
+                <a href="#" class="class-item x-stream">11X1</a>
+                <a href="#" class="class-item x-stream">11X2</a>
+                <a href="#" class="class-item x-stream">11X3</a>
+                <a href="#" class="class-item x-stream">11X4</a>
+                <a href="#" class="class-item x-stream">11X5</a>
+                <a href="#" class="class-item x-stream">11X6</a>
+            </div>
+        </div>
+
+        <div class="grade-wrapper">
+            <div class="grade-title">Khối 12 (Gồm 7 lớp)</div>
+            
+            <div class="stream-title">Khoa học Tự nhiên </div>
+            <div class="class-grid-detail">
+                <a href="12T1.html" class="class-item t-stream">12T1</a>
+                <a href="#" class="class-item t-stream">12T2</a>
+                <a href="#" class="class-item t-stream">12T3</a>
+            </div>
+
+            <div class="stream-title">Khoa học Xã hội </div>
+            <div class="class-grid-detail">
+                <a href="#" class="class-item x-stream">12X1</a>
+                <a href="#" class="class-item x-stream">12X2</a>
+                <a href="#" class="class-item x-stream">12X3</a>
+                <a href="#" class="class-item x-stream">12X4</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Bản quyền thuộc về Trường THPT Khánh Lâm.</p>
+    </footer>
+
+</body>
+</html>

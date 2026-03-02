@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hành Trình 12T1 - THPT Khánh Lâm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* === 1. NỀN TRANG VÀ CÀI ĐẶT CHUNG === */
+        body { 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); 
+            color: #2c3e50; 
+            line-height: 1.8; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Nút quay lại */
+        .btn-back { 
+            display: inline-block; 
+            margin: 30px 0 0 50px; 
+            color: #5b8c5a; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 15px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-10px); color: #2c3e50; }
+
+        /* === 2. HEADER LỚP HỌC === */
+        header { 
+            text-align: center; 
+            margin: 20px auto 60px; 
+            animation: fadeIn 1s ease-out;
+        }
+
+        .class-badge {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            color: white;
+            padding: 8px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4);
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 65px;
+            margin: 20px 0 10px;
+            background: linear-gradient(to right, #d35400, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 10px rgba(243, 156, 18, 0.2);
+        }
+
+        .intro-quote {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === 3. DÒNG THỜI GIAN (TIMELINE) TỪNG NĂM === */
+        .timeline-container {
+            width: 85%;
+            max-width: 900px;
+            margin: 0 auto 80px;
+            position: relative;
+        }
+
+        /* Đường kẻ dọc giữa dòng thời gian */
+        .timeline-container::before {
+            content: ''; position: absolute; top: 0; left: 50%;
+            width: 4px; height: 100%; background: #dfe6e9;
+            transform: translateX(-50%); border-radius: 2px;
+        }
+
+        .year-card {
+            background: white; border-radius: 20px;
+            padding: 40px; margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            position: relative; z-index: 2;
+            animation: fadeIn 1.2s ease-out; transition: 0.4s;
+        }
+
+        .year-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .school-year {
+            font-size: 22px; font-weight: 800; padding: 8px 25px;
+            border-radius: 30px; color: white; display: inline-block;
+            margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Màu sắc từng năm */
+        .card-10 { border-top: 6px solid #2ecc71; }
+        .card-10 .school-year { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .card-10 h2 { color: #27ae60; }
+        .card-10 .teacher-name { color: #2ecc71; }
+
+        .card-11 { border-top: 6px solid #3498db; }
+        .card-11 .school-year { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .card-11 h2 { color: #2980b9; }
+        .card-11 .teacher-name { color: #3498db; }
+
+        .card-12 { border-top: 6px solid #e74c3c; }
+        .card-12 .school-year { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .card-12 h2 { color: #c0392b; }
+        .card-12 .teacher-name { color: #e74c3c; }
+
+        .year-card h2 { font-size: 30px; margin: 0 0 10px 0; }
+
+        .teacher-info {
+            font-size: 18px; font-weight: 600; color: #7f8c8d;
+            margin-bottom: 25px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .teacher-name { font-size: 24px; font-family: 'Dancing Script', cursive; font-weight: bold; }
+        .highlight-number { font-weight: bold; font-size: 20px; padding: 2px 6px; border-radius: 5px; background-color: #f1f2f6; }
+
+        .content { font-family: 'Lora', serif; font-size: 18px; color: #4b6584; text-align: justify; line-height: 1.9; }
+        .content p { margin-bottom: 15px; }
+        
+        .class-photo {
+            width: 100%; height: 400px; object-fit: cover;
+            border-radius: 15px; margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08); transition: 0.4s;
+        }
+        .class-photo:hover { transform: scale(1.02); }
+
+        /* === 4. KHU VỰC THẺ LẬT (FLIP CARD) THÀNH VIÊN === */
+        .members-section {
+            width: 85%; max-width: 1100px; margin: 80px auto 40px; text-align: center;
+        }
+
+        .members-title {
+            font-family: 'Dancing Script', cursive; font-size: 50px;
+            color: #c0392b; margin-bottom: 60px; position: relative; display: inline-block;
+        }
+
+        .members-title::after {
+            content: ''; display: block; width: 70%; height: 3px;
+            background: linear-gradient(to right, transparent, #e74c3c, #f1c40f, transparent);
+            margin: 10px auto 0; border-radius: 5px;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        /* KHUNG THẺ LẬT CHÍNH */
+        .flip-card {
+            background-color: transparent; width: 100%; height: 320px; 
+            perspective: 1000px; font-family: 'Quicksand', sans-serif;
+        }
+
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            padding: 20px; box-sizing: border-box; 
+        }
+
+        .flip-card-front {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+            color: white; transform: rotateY(180deg);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* Trang trí mặt trước */
+        .avatar-frame {
+            width: 130px; height: 130px; margin: 0 auto 15px; border-radius: 50%;
+            background: linear-gradient(135deg, #f1c40f, #e74c3c);
+            padding: 4px; box-shadow: 0 8px 20px rgba(231, 76, 60, 0.2);
+        }
+        .avatar-frame img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid white;
+        }
+        .member-name { font-size: 22px; font-weight: 700; color: #c0392b; margin: 0; }
+        .hint-text { font-size: 13px; color: #95a5a6; margin-top: 5px; font-style: italic; }
+
+        /* Trang trí mặt sau */
+        .quote-icon { font-size: 40px; color: rgba(255,255,255,0.3); line-height: 0.5; margin-bottom: 15px; }
+        .member-role {
+            font-size: 13px; color: #e74c3c; background: white; text-transform: uppercase;
+            letter-spacing: 2px; font-weight: bold; padding: 5px 15px; border-radius: 20px;
+            margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .member-quote { font-family: 'Lora', serif; font-style: italic; font-size: 16px; color: white; line-height: 1.6; padding: 0 10px; }
+
+        /* KẾT BÀI */
+        .end-mark { text-align: center; margin: 40px 0 20px; color: #f39c12; font-size: 30px; letter-spacing: 5px; }
+    </style>
+</head>
+<body>
+
+    <a href="Gioi-thieu.html" class="btn-back">← Trở về Sơ đồ lớp</a>
+
+    <header>
+        <span class="class-badge">TẬP THỂ 12T1 (NIÊN KHÓA 2023 - 2026)</span>
+        <h1>Hành Trình Thanh Xuân</h1>
+        <p class="intro-quote">"Có một nơi gọi là lớp học, có một thứ gọi là thanh xuân. 12T1 không chỉ là tên của một tập thể, mà là nơi cất giữ những nụ cười, những giọt nước mắt và cả một thời tuổi trẻ rực rỡ nhất dưới mái trường Khánh Lâm."</p>
+    </header>
+
+    <div class="timeline-container">
+
+        <article class="year-card card-10">
+            <div class="school-year">Năm học 2023 - 2024</div>
+            <h2>Lớp 10: Những Chồi Non Bỡ Ngỡ</h2>
+            <div class="teacher-info">
+                <span>Chủ nhiệm:</span><span class="teacher-name">Thầy Trịnh Việt Luyện</span>
+                <span style="margin-left: auto;">Sỉ số: <span class="highlight-number" style="color:#27ae60;">46</span> thành viên</span>
+            </div>
+            <div class="content">
+                <p>Mùa thu năm ấy, những cánh cổng trường THPT Khánh Lâm dang tay chào đón những cô cậu học trò vừa chuyển cấp. Chúng mình gặp nhau dưới cái tên <b>10T1</b>. Những ngày đầu tiên, ai cũng rụt rè, bẽn lẽn giấu những ánh nhìn ngại ngùng sau những trang sách mới.</p>
+                <p>Nhưng thật may mắn, chúng mình có <b>thầy Trịnh Việt Luyện</b> đồng hành. Thầy không chỉ là một người giáo viên chủ nhiệm nghiêm khắc uốn nắn những nề nếp ban đầu, mà còn là người cha thứ hai kiên nhẫn gắn kết <span class="highlight-number">46</span> cá tính hoàn toàn khác biệt. Nhờ có thầy, 46 thành viên đã bắt đầu biết mở lòng và viết nên những kỷ niệm đầu tiên của tuổi cấp 3 đầy thơ ngây.</p>
+            </div>
+            <img src="tap-the-10t1.png" alt="Tập thể lớp 10T1" class="class-photo">
+        </article>
+
+        <article class="year-card card-11">
+            <div class="school-year">Năm học 2024 - 2025</div>
+            <h2>Lớp 11: Thanh Xuân Gắn Kết</h2>
+            <div class="teacher-info">
+                <span>Chủ nhiệm:</span><span class="teacher-name">Thầy Nguyễn Mạnh Hùng</span>
+                <span style="margin-left: auto;">Sỉ số: <span class="highlight-number" style="color:#2980b9;">46</span> thành viên</span>
+            </div>
+            <div class="content">
+                <p>Bước sang năm lớp 11, cái rụt rè ngày nào đã nhường chỗ cho những trò đùa tinh nghịch của tuổi học trò "nhất quỷ nhì ma". Lớp <b>11T1</b> giờ đây là một khối thống nhất, một gia đình nhỏ thực sự.</p>
+                <p>Năm học này, chuyến đò của chúng mình được giao phó cho <b>thầy Nguyễn Mạnh Hùng</b>. Thầy mang đến một làn gió mới với sự tâm lý, gần gũi và những lời khuyên sâu sắc. Thầy đã cùng <span class="highlight-number">46</span> trái tim vượt qua những áp lực học hành của năm bản lề. Những giải thưởng phong trào hay những buổi sinh hoạt lớp ngập tràn tiếng cười đều in đậm dấu ấn và tình yêu thương của thầy Hùng.</p>
+            </div>
+            <img src="tap-the-11t1.png" alt="Tập thể lớp 11T1" class="class-photo">
+        </article>
+
+        <article class="year-card card-12">
+            <div class="school-year">Năm học 2025 - 2026</div>
+            <h2>Lớp 12: Chạm Tay Đến Ước Mơ</h2>
+            <div class="teacher-info">
+                <span>Chủ nhiệm:</span><span class="teacher-name">Thầy Trần Tri Âm</span>
+                <span style="margin-left: auto;">Sỉ số: <span class="highlight-number" style="color:#c0392b;">47</span> thành viên (Đón 1 bạn mới)</span>
+            </div>
+            <div class="content">
+                <p>Năm cuối cấp đến với những cảm xúc vội vã. <b>12T1</b> năm nay có một niềm vui nho nhỏ khi giang tay chào đón thêm một thành viên mới, biến tập thể trở thành con số <span class="highlight-number" style="color:#e74c3c;">47</span> tròn đầy và trọn vẹn hơn bao giờ hết.</p>
+                <p>Dìu dắt chúng mình trong chặng nước rút quan trọng này là <b>thầy Trần Tri Âm</b>. Thầy luôn ân cần, tỉ mỉ ôn luyện từng bài tập, lắng nghe từng trăn trở của học trò. 12T1 năm nay không chỉ học để thi, mà chúng mình học cách trân trọng từng phút giây. 47 thành viên, 47 ước mơ đang cùng nhau cất cánh dưới sự yêu thương vô bờ bến của thầy.</p>
+            </div>
+            <img src="tap-the-12t1.png" alt="Tập thể lớp 12T1" class="class-photo">
+        </article>
+    </div>
+
+    <div class="members-section">
+        <h2 class="members-title">47 Mảnh Ghép Thanh Xuân</h2>
+        
+        <div class="members-grid">
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-1.jpg" alt="Thành viên 1"></div>
+                        <h3 class="member-name">Tên Thành Viên 1</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 1</span>
+                        <p class="member-quote">Thanh xuân như một ly trà, gục đầu xuống bàn một phát hết bà thanh xuân.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-2.jpg" alt="Thành viên 2"></div>
+                        <h3 class="member-name">Tên Thành Viên 2</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 2</span>
+                        <p class="member-quote">3 năm cấp ba trôi qua nhanh như cách tôi nộp giấy trắng bài kiểm tra Toán.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-3.jpg" alt="Thành viên 3"></div>
+                        <h3 class="member-name">Tên Thành Viên 3</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 3</span>
+                        <p class="member-quote">Tình bạn của chúng ta đắt giá như tờ 500k, và tôi thì... luôn thiếu tiền.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-4.jpg" alt="Thành viên 4"></div>
+                        <h3 class="member-name">Tên Thành Viên 4</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 4</span>
+                        <p class="member-quote">Hứa với nhau lên Đại học vẫn chơi chung, đừng rủ đi đa cấp là được!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-5.jpg" alt="Thành viên 5"></div>
+                        <h3 class="member-name">Tên Thành Viên 5</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 5</span>
+                        <p class="member-quote">Kẻ thù lớn nhất của đời người là cơn buồn ngủ tiết Sử. Cảm ơn tụi mày đã canh thầy cho tao ngủ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-6.jpg" alt="Thành viên 6"></div>
+                        <h3 class="member-name">Tên Thành Viên 6</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 6</span>
+                        <p class="member-quote">Bạn bè là gì? Là lúc đói mượn tiền mua bánh tráng trộn và đến lúc ra trường vẫn chưa trả.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-7.jpg" alt="Thành viên 7"></div>
+                        <h3 class="member-name">Tên Thành Viên 7</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 7</span>
+                        <p class="member-quote">Dù sau này có ra sao, có thành ông nọ bà kia thì xin hãy nhớ: tao từng cho mày chép bài Lý.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-8.jpg" alt="Thành viên 8"></div>
+                        <h3 class="member-name">Tên Thành Viên 8</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 8</span>
+                        <p class="member-quote">Cảm ơn vì đã luôn tung cước đánh thức tao mỗi khi thầy gọi trả bài miệng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-9.jpg" alt="Thành viên 9"></div>
+                        <h3 class="member-name">Tên Thành Viên 9</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 9</span>
+                        <p class="member-quote">Sau này ra đời có bị người ta ăn hiếp thì cứ gọi tao... tao đứng nhìn cho vui.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-10.jpg" alt="Thành viên 10"></div>
+                        <h3 class="member-name">Tên Thành Viên 10</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 10</span>
+                        <p class="member-quote">Chúc tập thể 12T1 ai cũng đỗ nguyện vọng 1, còn tao đỗ... tỷ phú.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-11.jpg" alt="Thành viên 11"></div>
+                        <h3 class="member-name">Tên Thành Viên 11</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 11</span>
+                        <p class="member-quote">Đi qua 3 năm cấp 3 mới hiểu, tìm một đứa cho mình chép bài khó hơn tìm người yêu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-12.jpg" alt="Thành viên 12"></div>
+                        <h3 class="member-name">Tên Thành Viên 12</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 12</span>
+                        <p class="member-quote">Tình bạn không đo bằng thời gian quen biết, mà đo bằng số lần bao nhau đi ăn sáng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-13.jpg" alt="Thành viên 13"></div>
+                        <h3 class="member-name">Tên Thành Viên 13</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 13</span>
+                        <p class="member-quote">Nếu có kiếp sau, tớ vẫn muốn làm thành viên của 12T1 (nhưng xin đừng xếp tớ ngồi bàn đầu).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-14.jpg" alt="Thành viên 14"></div>
+                        <h3 class="member-name">Tên Thành Viên 14</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 14</span>
+                        <p class="member-quote">Sau này thi đỗ đại học, tao hứa dắt tụi mày đi ăn quán xịn nhất... bằng tiền tụi mày.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-15.jpg" alt="Thành viên 15"></div>
+                        <h3 class="member-name">Tên Thành Viên 15</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 15</span>
+                        <p class="member-quote">Tình bạn cấp 3 là thứ tình cảm thuần khiết nhất, chắc vì lúc đó chưa đứa nào nợ tiền đứa nào.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-16.jpg" alt="Thành viên 16"></div>
+                        <h3 class="member-name">Tên Thành Viên 16</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 16</span>
+                        <p class="member-quote">Tao không giỏi Toán, nhưng tao biết tính tao rất thích chơi với tụi mày.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-17.jpg" alt="Thành viên 17"></div>
+                        <h3 class="member-name">Tên Thành Viên 17</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 17</span>
+                        <p class="member-quote">Hẹn gặp lại trên đỉnh vinh quang, hoặc ít nhất là ở quán trà sữa nhậu cuối tuần.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-18.jpg" alt="Thành viên 18"></div>
+                        <h3 class="member-name">Tên Thành Viên 18</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 18</span>
+                        <p class="member-quote">Chỉ mong sau này gặp lại, chúng ta không đứa nào mang thiệp cưới ra mời bắt đi phong bì.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-19.jpg" alt="Thành viên 19"></div>
+                        <h3 class="member-name">Tên Thành Viên 19</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 19</span>
+                        <p class="member-quote">Lên đại học nhớ tìm bạn mới tốt như tao nhé, nhưng cấm được quên tao nghe chưa!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-20.jpg" alt="Thành viên 20"></div>
+                        <h3 class="member-name">Tên Thành Viên 20</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 20</span>
+                        <p class="member-quote">Thi xong tụi mình xách balo lên và đi du lịch nhé! (Và thế là chả có chuyến đi nào cả).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-21.jpg" alt="Thành viên 21"></div>
+                        <h3 class="member-name">Tên Thành Viên 21</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 21</span>
+                        <p class="member-quote">Chúng ta của sau này cái gì cũng có, chỉ là không có chúng ta của năm 18 tuổi cùng một lớp.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-22.jpg" alt="Thành viên 22"></div>
+                        <h3 class="member-name">Tên Thành Viên 22</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 22</span>
+                        <p class="member-quote">Từng nụ cười, từng giọt nước mắt ở 12T1 sẽ là hành trang vô giá của tớ trên đường đời.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-23.jpg" alt="Thành viên 23"></div>
+                        <h3 class="member-name">Tên Thành Viên 23</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 23</span>
+                        <p class="member-quote">Nơi đẹp nhất là nơi chưa đi qua. Thời gian đẹp nhất là thời gian không thể quay trở lại.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-24.jpg" alt="Thành viên 24"></div>
+                        <h3 class="member-name">Tên Thành Viên 24</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 24</span>
+                        <p class="member-quote">Tớ không nhớ lúc bắt đầu quen nhau thế nào, chỉ biết bây giờ không thể thiếu nhau.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-25.jpg" alt="Thành viên 25"></div>
+                        <h3 class="member-name">Tên Thành Viên 25</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 25</span>
+                        <p class="member-quote">Đừng buồn vì phải chia tay, hãy mỉm cười vì chúng ta đã có thanh xuân rực rỡ nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-26.jpg" alt="Thành viên 26"></div>
+                        <h3 class="member-name">Tên Thành Viên 26</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 26</span>
+                        <p class="member-quote">Mong mỏi 3 năm trời chỉ để rời khỏi ngôi trường này, đến ngày rời đi lại khóc như mưa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-27.jpg" alt="Thành viên 27"></div>
+                        <h3 class="member-name">Tên Thành Viên 27</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 27</span>
+                        <p class="member-quote">Bạn thân là đứa chửi thẳng mặt bạn, nhưng lại sống chết bênh bạn trước mặt người khác.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-28.jpg" alt="Thành viên 28"></div>
+                        <h3 class="member-name">Tên Thành Viên 28</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 28</span>
+                        <p class="member-quote">Kỷ niệm của 12T1 không nằm trong những bức ảnh, mà ở vị trí đặc biệt trong trái tim.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-29.jpg" alt="Thành viên 29"></div>
+                        <h3 class="member-name">Tên Thành Viên 29</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 29</span>
+                        <p class="member-quote">Ngày chia tay, xin đừng nói lời tạm biệt, hãy nói "Hẹn gặp lại!" nhé.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-30.jpg" alt="Thành viên 30"></div>
+                        <h3 class="member-name">Tên Thành Viên 30</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 30</span>
+                        <p class="member-quote">Ai cũng có một thời để nhớ. Với tôi, đó là 1000 ngày cùng 12T1 chạy deadline sổ đầu bài.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-31.jpg" alt="Thành viên 31"></div>
+                        <h3 class="member-name">Tên Thành Viên 31</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 31</span>
+                        <p class="member-quote">Trưởng thành là khi nhận ra, những ngày bị thầy la lại là những ngày vui vẻ nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-32.jpg" alt="Thành viên 32"></div>
+                        <h3 class="member-name">Tên Thành Viên 32</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 32</span>
+                        <p class="member-quote">Xin lỗi vì những lúc cãi vã bồng bột, cảm ơn vì sự vị tha. 12T1 mãi là gia đình.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-33.jpg" alt="Thành viên 33"></div>
+                        <h3 class="member-name">Tên Thành Viên 33</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 33</span>
+                        <p class="member-quote">Có những người bạn, chỉ cần ngồi im cạnh nhau ở góc sân trường cũng thấy bình yên.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-34.jpg" alt="Thành viên 34"></div>
+                        <h3 class="member-name">Tên Thành Viên 34</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 34</span>
+                        <p class="member-quote">47 con người, 47 giấc mơ, nhưng chúng ta có chung một thanh xuân rực rỡ mang tên 12T1.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-35.jpg" alt="Thành viên 35"></div>
+                        <h3 class="member-name">Tên Thành Viên 35</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 35</span>
+                        <p class="member-quote">Nếu thanh xuân là một cơn mưa rào, 12T1 chính là chiếc ô tuyệt vời và rực rỡ nhất.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-36.jpg" alt="Thành viên 36"></div>
+                        <h3 class="member-name">Tên Thành Viên 36</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 36</span>
+                        <p class="member-quote">Chúng ta không có cỗ máy thời gian, nhưng chúng ta có kỷ niệm để thanh xuân sống mãi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-37.jpg" alt="Thành viên 37"></div>
+                        <h3 class="member-name">Tên Thành Viên 37</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 37</span>
+                        <p class="member-quote">Thanh xuân của tôi mang tên các cậu. Cảm ơn vì đã xuất hiện đúng lúc, đúng người.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-38.jpg" alt="Thành viên 38"></div>
+                        <h3 class="member-name">Tên Thành Viên 38</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 38</span>
+                        <p class="member-quote">Tao có thể quên các hằng đẳng thức đáng nhớ, nhưng sẽ không bao giờ quên 46 đứa tụi mày.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-39.jpg" alt="Thành viên 39"></div>
+                        <h3 class="member-name">Tên Thành Viên 39</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 39</span>
+                        <p class="member-quote">12T1 mãi đỉnh! Gặp được nhau giữa muôn ngàn người là cái duyên lớn nhất của học trò.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-40.jpg" alt="Thành viên 40"></div>
+                        <h3 class="member-name">Tên Thành Viên 40</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 40</span>
+                        <p class="member-quote">Mới ngày nào còn bỡ ngỡ bước vào lớp, giờ đã bỡ ngỡ bước ra đời. Chúc chân cứng đá mềm.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-41.jpg" alt="Thành viên 41"></div>
+                        <h3 class="member-name">Tên Thành Viên 41</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 41</span>
+                        <p class="member-quote">Cảm ơn vì đã luôn chịu đựng tính càm ràm của tôi. Phía trước là bầu trời, bay cao nhé!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-42.jpg" alt="Thành viên 42"></div>
+                        <h3 class="member-name">Tên Thành Viên 42</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 42</span>
+                        <p class="member-quote">Chúc 47 chiến binh của 12T1 bút cứng tay mềm, khoanh lụi cũng trúng, thành công rực rỡ!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-43.jpg" alt="Thành viên 43"></div>
+                        <h3 class="member-name">Tên Thành Viên 43</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 43</span>
+                        <p class="member-quote">Đoàn viên 12T1 không chỉ giỏi quậy, giỏi phong trào mà thi cử chắc chắn cũng giật thủ khoa!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-44.jpg" alt="Thành viên 44"></div>
+                        <h3 class="member-name">Tên Thành Viên 44</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 44</span>
+                        <p class="member-quote">Cuối năm quỹ lớp còn dư dả nụ cười và kỷ niệm. Phát cho mỗi đứa một ít mang lên Đại học nhé!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-45.jpg" alt="Thành viên 45"></div>
+                        <h3 class="member-name">Tên Thành Viên 45</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 45</span>
+                        <p class="member-quote">Tổ mình lúc nào cũng ồn ào nhất lớp, nhưng tớ sẽ rất nhớ những lần bao che nhau ăn vụng đó.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-46.jpg" alt="Thành viên 46"></div>
+                        <h3 class="member-name">Tên Thành Viên 46</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 46</span>
+                        <p class="member-quote">Chuyển đến vào năm cuối cấp là một thử thách, nhưng sự ấm áp của 12T1 đã biến nó thành may mắn.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="avatar-frame"><img src="thanh-vien-47.jpg" alt="Thành viên 47"></div>
+                        <h3 class="member-name">Tên Thành Viên 47</h3>
+                        <span class="hint-text">Lật thẻ ➔</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="quote-icon">❝</div>
+                        <span class="member-role">Chức vụ 47</span>
+                        <p class="member-quote">Tạm biệt 12T1. Khép lại trang sách tuổi 18, mở ra bầu trời rộng lớn của tương lai. Yêu tất cả!</p>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+    </div>
+
+    <div class="end-mark">🌻 🎓 🕊️</div>
+    <p style="text-align: center; color: #95a5a6; font-size: 15px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 50px;">-- Mãi mãi tự hào là một phần của 12T1 --</p>
+
+</body>
+</html>

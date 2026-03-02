@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tiếp Sức Mùa Thi - THPT Khánh Lâm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === 1. NỀN LUNG LINH TÔNG CAM ẤM ÁP === */
+        body { 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            /* Nền gradient vàng cam nhạt tạo cảm giác mùa hè rực rỡ nhưng vẫn dịu mắt */
+            background: linear-gradient(135deg, #fffcf9 0%, #ffeedb 100%); 
+            color: #2d3436; 
+            line-height: 1.8; 
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { 
+            width: 85%; 
+            max-width: 1000px; 
+            margin: 40px auto; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 50px; 
+            border-radius: 30px; 
+            box-shadow: 0 20px 60px rgba(230, 126, 34, 0.1); /* Đổ bóng cam mờ */
+            backdrop-filter: blur(15px);
+            animation: fadeUp 1s ease-out;
+        }
+
+        /* === 2. NÚT QUAY LẠI === */
+        .btn-back { 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            color: #d35400; /* Cam đậm */
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-10px); color: #e67e22; }
+
+        /* === 3. HEADER NHIỆT HUYẾT === */
+        header { text-align: center; margin-bottom: 60px; }
+        
+        .category-badge {
+            background: linear-gradient(to right, #e67e22, #f39c12);
+            color: white;
+            padding: 6px 25px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            text-transform: uppercase;
+        }
+
+        header h1 { 
+            font-size: 46px; 
+            color: #2f3542; 
+            margin: 10px 0; 
+            /* Gradient chữ Cam cháy và Vàng */
+            background: linear-gradient(to right, #d35400, #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .meta { color: #b2bec3; font-size: 14px; font-weight: 600; }
+
+        /* === 4. NỘI DUNG VÀ HÌNH ẢNH === */
+        .intro-text { 
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px; 
+            color: #d35400; 
+            text-align: center; 
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .intro-text::before, .intro-text::after {
+            content: "“";
+            font-size: 60px;
+            color: #f39c12;
+            opacity: 0.3;
+        }
+
+        .content-paragraph { 
+            font-size: 19px; 
+            margin-bottom: 30px; 
+            text-align: justify; 
+            color: #4b6584;
+        }
+
+        /* Khung ảnh chính */
+        .photo-block { 
+            margin: 50px 0; 
+            text-align: center; 
+        }
+        
+        .photo-block img { 
+            width: 100%; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(230, 126, 34, 0.15); 
+            transition: 0.5s;
+        }
+        
+        .photo-block:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 25px 60px rgba(211, 84, 0, 0.2);
+        }
+
+        .caption { 
+            display: block; 
+            margin-top: 15px; 
+            font-size: 14px; 
+            color: #7f8c8d; 
+            font-style: italic;
+        }
+
+        /* Grid ảnh phong cách ngẫu nhiên */
+        .photo-grid { 
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px; 
+            margin: 50px 0; 
+        }
+        
+        .photo-grid img { 
+            width: 100%; 
+            height: 380px; 
+            object-fit: cover; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        /* === 5. KẾT BÀI === */
+        .end-mark { 
+            text-align: center; 
+            margin: 80px 0 20px; 
+            color: #e67e22; 
+            font-size: 28px;
+            letter-spacing: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="Hoat-dong.html" class="btn-back">← QUAY LẠI TRANG HOẠT ĐỘNG</a>
+
+        <header>
+            <span class="category-badge">ĐỒNG HÀNH CÙNG SĨ TỬ</span>
+            <h1>Nắng Hạ Không Phai Sắc Áo Tình Nguyện</h1>
+            <div class="meta">Bản tin: Đội Tình Nguyện | Kỳ thi THPT Quốc Gia 2026</div>
+        </header>
+
+        <p class="intro-text">Nắng tháng sáu dẫu có gắt, cũng không thể làm vơi đi những nụ cười rạng rỡ và nhiệt huyết tuổi trẻ của đội tình nguyện viên Khánh Lâm.</p>
+
+        <section class="photo-block">
+           <div>  <img src="tiep-suc-4.jpg">
+                  <h2 class="photo-caption">Đội tình nguyện tiếp sức mùa thi</h2>
+                <span class="caption">Đội hình "Tiếp sức mùa thi" trường THPT Khánh Lâm đã sẵn sàng từ rất sớm để đón các sĩ tử.</span>
+        
+             </div>
+
+          
+        </section>
+
+        <div class="content-paragraph">
+            Kỳ thi tốt nghiệp THPT Quốc gia luôn là khoảng thời gian căng thẳng nhất đối với các bạn học sinh khối 12. Thấu hiểu những áp lực và lo âu đó, chiến dịch "Tiếp sức mùa thi" của trường THPT Khánh Lâm đã ra quân với hàng chục tình nguyện viên mang màu áo xanh, áo cam rực rỡ. Ngay từ sáng sớm tinh mơ, khi cổng trường thi chưa mở, các trạm hỗ trợ đã được dựng lên tươm tất với đầy đủ nước suối mát lạnh, quạt giấy, khăn lạnh và cả những vật dụng văn phòng phẩm dự phòng.
+        </div>
+
+        <section class="photo-grid">
+           <div><img src="tiep-suc-1.jpg">
+                <h2 class="photo-caption">Phát nước cho thí sinh</h2>
+                </div>
+            <div> <img src="tiep-suc-2.jpg">
+                    <h2 class="photo-caption">Thí sinh đầu tiên hoàn thành bài thi sớm nhất </h2>
+                </div>
+           
+        </section>
+        <p style="text-align: center; font-size: 14px; color: #7f8c8d;">Những chai nước mát lạnh và cái đập tay truyền động lực "Thi tốt nhé!".</p>
+
+        <div class="content-paragraph">
+            Không chỉ làm nhiệm vụ phát nước hay hướng dẫn phòng thi, các tình nguyện viên còn phối hợp cùng lực lượng chức năng phân luồng giao thông, đảm bảo an ninh trật tự trước cổng trường. Đẹp nhất có lẽ là khoảnh khắc các bạn đứng thành hai hàng, vỗ tay và hô vang những khẩu hiệu cổ vũ tinh thần khi các sĩ tử bước ra khỏi phòng thi. Những cái ôm chia sẻ, những nụ cười động viên đã xua tan đi phần nào cái nóng oi ả và sự mệt mỏi sau những giờ làm bài căng não.
+        </div>
+
+        <section class="photo-block">
+          <div><img src="tiep-suc-3.jpg">
+                <h2 class="photo-caption">Hỗ trợ suất ăn trưa cho thí sinh</h2>
+            
+        </div>  
+            
+            
+            <span class="caption">Có thực mới vực được đạo" – Hàng trăm suất ăn trưa miễn phí đã được chuẩn bị tươm tất, sẵn sàng trao tận tay các bạn học sinh.</span>
+        </section>
+
+        <div class="content-paragraph">
+            Chiến dịch "Tiếp sức mùa thi" không chỉ là một hoạt động bề nổi, mà là minh chứng rõ nét nhất cho tinh thần tương thân tương ái, sự đoàn kết của các thế hệ học sinh trường THPT Khánh Lâm. Chúc cho tất cả các "cá chép" khối 12 của chúng ta sẽ "hóa rồng" rực rỡ, vượt vũ môn thành công, đáp lại niềm tin yêu và sự đồng hành của cả một hậu phương vững chắc!
+        </div>
+
+        <div class="end-mark">☀️ 💦 💯</div>
+        <p style="text-align: center; color: #bdc3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 3px;">-- Rực cháy mùa hè tình nguyện --</p>
+    </div>
+
+</body>
+</html>
