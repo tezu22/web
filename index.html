@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chào mừng - THPT Khánh Lâm</title>
+    <style>
+        /* === CÀI ĐẶT CHUNG === */
+        body { margin: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; overflow: hidden; background-color: #f9fbfd; }
+
+        /* === ẢNH NỀN FULL (Nền sáng) === */
+        .hero-section {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('images/truong.png');
+            background-size: cover; background-position: center; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; position: relative; overflow: hidden;
+        }
+
+        /* Quả cầu ánh sáng pastel */
+        .light-orb {
+            position: absolute; border-radius: 50%; filter: blur(80px); z-index: 2; opacity: 0.6;
+            animation: floatOrb 10s infinite alternate ease-in-out; pointer-events: none;
+        }
+        .orb-1 { width: 350px; height: 350px; background: #85c1e9; top: -10%; left: 10%; animation-duration: 12s; }
+        .orb-2 { width: 300px; height: 300px; background: #f5b041; bottom: 10%; right: 5%; animation-duration: 15s; }
+        .orb-3 { width: 250px; height: 250px; background: #aeb6bf; top: 40%; left: 60%; animation-duration: 18s; }
+        @keyframes floatOrb { 0% { transform: translateY(0) scale(1) translateX(0); } 100% { transform: translateY(-50px) scale(1.2) translateX(30px); } }
+
+        /* === NỘI DUNG CHÍNH === */
+        .hero-content { 
+            z-index: 10; 
+            animation: fadeUp 1.5s ease-out 4s both; 
+        }
+        
+        .hero-content h1 { 
+            color: #2c3e50; 
+            font-size: 65px; margin: 0 0 15px 0; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.1); 
+            letter-spacing: 5px; text-transform: uppercase; font-weight: 900;
+        }
+        
+        /* Hiệu ứng gõ chữ */
+        .typewriter-text {
+            font-size: 24px; margin-bottom: 50px; 
+            color: #34495e; 
+            font-style: italic; overflow: hidden;
+            border-right: .15em solid #3498db; 
+            white-space: nowrap; margin: 0 auto 50px auto; letter-spacing: 2px;
+            width: 0; 
+            animation: typing 3.5s steps(40, end) 5s forwards, blink-caret .75s step-end infinite;
+        }
+        
+        /* Nút bấm thanh lịch */
+        .btn-action {
+            display: inline-block; background: linear-gradient(135deg, #3498db, #2980b9); color: white;
+            padding: 18px 50px; text-decoration: none; font-size: 20px; font-weight: bold; border-radius: 50px; 
+            transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4); text-transform: uppercase; letter-spacing: 2px;
+        }
+        .btn-action:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 35px rgba(52, 152, 219, 0.6); color: white; }
+
+        /* Thanh tin tức trắng kính */
+        .news-ticker {
+            position: absolute; bottom: 0; width: 100%; 
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(15px);
+            display: flex; align-items: center; border-top: 1px solid rgba(0, 0, 0, 0.1); height: 55px; z-index: 20;
+        }
+        .ticker-title {
+            background: linear-gradient(45deg, #3498db, #2980b9); color: white; font-weight: bold; padding: 0 25px;
+            height: 100%; display: flex; align-items: center; font-size: 16px; letter-spacing: 2px; z-index: 2;
+        }
+        .ticker-content { color: #2c3e50; font-size: 18px; font-weight: bold; padding-left: 15px; letter-spacing: 1px; }
+        .highlight-text { color: #e74c3c; font-weight: bold; }
+
+        /* Keyframes */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #3498db; } }
+        
+        /* ======================================================== */
+        /* MÀN HÌNH CHÀO (ĐÃ TRẢ VỀ NỀN XANH ĐEN & CHỮ VÀNG/TRẮNG CŨ) */
+        /* ======================================================== */
+        .intro-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+            background: linear-gradient(135deg, #1e272e, #2c3e50); /* Nền xanh đen bí ẩn */
+            z-index: 9999; display: flex; justify-content: center; align-items: center; 
+            animation: fadeOutIntro 5s forwards; 
+        }
+        .intro-text { text-align: center; color: white; }
+        .welcome { 
+            display: block; font-size: 24px; letter-spacing: 10px; margin-bottom: 10px; 
+            color: #f1c40f; /* Chữ Welcome màu vàng */
+            opacity: 0; animation: textIn 2s ease forwards 0.5s; font-weight: bold;
+        }
+        .school-name { 
+            display: block; font-size: 65px; font-weight: bold; letter-spacing: 15px; 
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4); 
+            color: white; /* Chữ KHANH LAM màu trắng phát sáng */
+            opacity: 0; animation: textIn 2s ease forwards 1.5s; 
+        }
+        
+        @keyframes textIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+        
+        @keyframes fadeOutIntro { 
+            0%, 70% { opacity: 1; visibility: visible; } 
+            99% { opacity: 0; visibility: visible; } 
+            100% { opacity: 0; visibility: hidden; } 
+        }
+        
+        /* Ẩn màn chào nếu có link #da-vao-trang */
+        #da-vao-trang:target .intro-overlay { display: none !important; animation: none !important; }
+    </style>
+</head>
+<body id="da-vao-trang">
+
+    <div class="intro-overlay">
+        <div class="intro-text">
+            <span class="welcome">WELCOME TO</span>
+            <span class="school-name">KHANH LAM</span>
+        </div>
+    </div>
+
+    <header class="hero-section">
+        <div class="light-orb orb-1"></div><div class="light-orb orb-2"></div><div class="light-orb orb-3"></div>
+        
+        <div class="hero-content">
+            <h1>THPT Khánh Lâm</h1>
+            <div class="typewriter-text">Khát vọng vươn xa - Nơi ươm mầm những tài năng tương lai</div>
+            <a href="1-Trang-chu.html" class="btn-action">Khám Phá Ngay ➔</a>
+        </div>
+        
+        <div class="news-ticker">
+            <div class="ticker-title">🔥 TIN NÓNG</div>
+            <marquee class="ticker-content" scrollamount="8">
+                Chào mừng năm học mới! 🚀 | <span class="highlight-text">Chúc mừng Đội bóng chuyền nam xuất sắc giành chức Vô địch 🏆</span> | Kế hoạch Tuyển sinh lớp 10 năm nay đã được công bố 📌
+            </marquee>
+        </div>
+    </header>
+
+</body>
+</html>

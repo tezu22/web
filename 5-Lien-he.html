@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Liên Hệ & Đăng Ký - THPT Khánh Lâm</title>
+    <style>
+        /* === CÀI ĐẶT CHUNG (Trở về nền sáng chuẩn) === */
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #f9fbfd; 
+            color: #333; 
+        }
+        a { text-decoration: none; }
+
+        /* === 1. BANNER === */
+        .mini-banner {
+            background-image: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('img/truong.png');
+            background-size: cover; background-position: center; height: 280px; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;
+        }
+        
+        .mini-banner h1 { 
+            color: white; font-size: 40px; margin-top: 60px; 
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5); text-transform: uppercase; letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        /* === KHUNG MENU BONG BÓNG CHUẨN === */
+        .bubble-menu {
+            position: absolute; top: 40px; left: 50%; transform: translateX(-50%); z-index: 100;
+            background-color: rgba(255, 255, 255, 0.15); border-radius: 50px; padding: 10px 20px;
+            display: flex; gap: 10px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap; width: max-content;
+        }
+
+        .bubble-menu a {
+            color: white; font-size: 16px; font-weight: bold; padding: 10px 20px; border-radius: 30px; transition: all 0.3s;
+        }
+        .bubble-menu a.active, .bubble-menu a:hover { background-color: rgba(241, 196, 15, 0.8); color: #333; }
+
+        /* === BỐ CỤC FORM LIÊN HỆ === */
+        .main-content { padding: 60px 0; width: 85%; max-width: 1000px; margin: 0 auto; }
+        
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { color: #2c3e50; font-size: 32px; margin: 0 0 10px 0; font-weight: bold; }
+        .section-header p { color: #7f8c8d; font-size: 16px; margin: 0; }
+
+        .contact-container {
+            display: flex; gap: 0; background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid #f0f0f0;
+        }
+
+        /* Phần Thông tin Trường (Bên trái) */
+        .info-panel {
+            background: linear-gradient(135deg, #2c3e50, #34495e); color: white;
+            width: 40%; padding: 50px 40px; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .info-panel h3 { font-size: 26px; margin-top: 0; margin-bottom: 30px; color: #f1c40f;}
+        
+        .info-item { display: flex; align-items: flex-start; margin-bottom: 25px; gap: 15px; transition: transform 0.3s ease; }
+        .info-item:hover { transform: translateX(8px); } /* Hiệu ứng nhích nhẹ sang phải */
+        
+        .info-icon { font-size: 24px; background: rgba(255,255,255,0.1); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%;}
+        .info-text h4 { margin: 0 0 5px 0; font-size: 14px; color: #bdc3c7; text-transform: uppercase;}
+        .info-text p { margin: 0; font-size: 16px; line-height: 1.5; font-weight: bold;}
+        
+        /* Hiệu ứng bản đồ giả lập xịn hơn */
+        .map-placeholder {
+            margin-top: auto; height: 180px; 
+            background: linear-gradient(rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.4)), url('https://kassandratheory.github.io/images/map-bg.jpg') center/cover;
+            border-radius: 15px; transition: 0.4s; border: 2px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .map-placeholder:hover { transform: scale(1.03); border-color: #f1c40f;}
+        .map-placeholder span { background: #f1c40f; color: #333; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 13px;}
+
+        /* Phần Form Đăng ký (Bên phải) */
+        .form-panel { width: 60%; padding: 50px; background-color: #ffffff; position: relative;}
+        
+        .form-group { margin-bottom: 25px; }
+        .form-group label { 
+            display: block; font-weight: bold; color: #34495e; margin-bottom: 8px; font-size: 14px;
+        }
+        
+        /* Ô nhập liệu được trang trí tinh tế */
+        .form-control {
+            width: 100%; padding: 15px 18px; border: 1.5px solid #ecf0f1; border-radius: 12px;
+            font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; box-sizing: border-box;
+            background-color: #f8f9fa; transition: all 0.3s ease; color: #2c3e50;
+        }
+        
+        /* Hiệu ứng khi bấm vào ô gõ chữ */
+        .form-control:focus { 
+            outline: none; border-color: #3498db; background-color: white; 
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.1); /* Bóng mờ màu xanh */
+            transform: translateY(-2px); /* Ô nhập liệu hơi nổi lên */
+        }
+        
+        textarea.form-control { height: 120px; resize: vertical; }
+
+        /* Nút Gửi sang trọng */
+        .btn-submit {
+            background: linear-gradient(135deg, #3498db, #2980b9); color: white;
+            border: none; padding: 16px 30px; border-radius: 50px; font-size: 16px; font-weight: bold;
+            cursor: pointer; transition: all 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .btn-submit:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 25px rgba(52, 152, 219, 0.3); 
+            background: linear-gradient(135deg, #2980b9, #2471a3); 
+        }
+
+        /* === CHÂN TRANG === */
+        footer { background-color: #2c3e50; color: white; text-align: center; padding: 30px 0; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header class="mini-banner">
+        <nav class="bubble-menu">
+            <a href="1-Trang-chu.html">Trang chủ</a>
+            <a href="2-Gioi-thieu.html">Giới thiệu</a>
+            <a href="3-Hoat-dong.html">Hoạt động</a>
+            <a href="Tin-tuc.html">Tin tức</a>
+            <a href="6-Thong-bao.html">Thông báo</a>
+            <a href="5-Lien-he.html" class="active">Liên hệ</a>
+        </nav>
+        <h1>Cổng Đăng Ký Trực Tuyến</h1>
+    </header>
+
+    <main class="main-content">
+        
+        <div class="section-header">
+            <h2>Phiếu Đăng Ký Sự Kiện / Liên Hệ</h2>
+            <p>Vui lòng điền đầy đủ thông tin bên dưới, Đoàn trường sẽ ghi nhận và phản hồi sớm nhất.</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="info-panel">
+                <div>
+                    <h3>Thông Tin Trường</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-text">
+                            <h4>Địa chỉ</h4>
+                            <p>Xã Khánh Lâm, Huyện U Minh, Cà Mau</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-text">
+                            <h4>Điện thoại liên hệ</h4>
+                            <p>0290 2247 222</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div class="info-text">
+                            <h4>Email hỗ trợ</h4>
+                            <p>c3khanhlam@camau.edu.vn</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-placeholder" title="Bản đồ THPT Khánh Lâm">
+                    <span>Xem trên Google Maps</span>
+                </div>
+            </div>
+
+            <div class="form-panel">
+                <form action="#" method="POST">
+                    
+                    <div class="form-group">
+                        <label for="fullname">👤 Họ và tên học sinh / Người đại diện:</label>
+                        <input type="text" id="fullname" class="form-control" placeholder="Nhập họ và tên của bạn..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">📧 Địa chỉ Email liên lạc:</label>
+                        <input type="email" id="email" class="form-control" placeholder="Ví dụ: nhat.hoang@gmail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic">🎯 Chủ đề đăng ký tham gia:</label>
+                        <select id="topic" class="form-control" required>
+                            <option value="" disabled selected>-- Bấm để chọn một sự kiện --</option>
+                            <option value="hoitrai">⛺ Đăng ký Gian hàng Hội Trại 26/3</option>
+                            <option value="esport">🎮 Đăng ký thi đấu Giải E-Sports toàn trường</option>
+                            <option value="prom">🥂 Đặt vé tham dự Dạ tiệc Tri ân Khối 12</option>
+                            <option value="talkshow">🎓 Đăng ký tham gia Talkshow Hướng nghiệp</option>
+                            <option value="khac">💬 Liên hệ vấn đề khác...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">📝 Nội dung chi tiết (Lớp, SĐT, Vị trí thi đấu...):</label>
+                        <textarea id="message" class="form-control" placeholder="Viết chi tiết yêu cầu của bạn vào đây..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Xác Nhận & Gửi Thông Tin ➔</button>
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Bản quyền thuộc về Trường THPT Khánh Lâm.</p>
+        <p style="font-size: 14px; color: #a0aec0; margin-top: 5px;">Hệ thống phát triển bởi Lớp 12T1</p>
+    </footer>
+
+</body>
+</html>

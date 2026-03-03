@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinh hoạt dưới cờ Tuần 24 - THPT Khánh Lâm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === NỀN VÀ KHUNG CHUNG (Đồng bộ với web) === */
+        body { 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); 
+            color: #2d3436; 
+            line-height: 1.8; 
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { 
+            width: 85%; max-width: 1000px; margin: 40px auto; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 50px; border-radius: 30px; 
+            box-shadow: 0 20px 60px rgba(0, 206, 201, 0.15);
+            backdrop-filter: blur(15px);
+            animation: fadeUp 1s ease-out;
+        }
+
+        /* Nút quay lại */
+        .btn-back { 
+            display: inline-block; margin-bottom: 20px; 
+            color: #00cec9; text-decoration: none; 
+            font-weight: 700; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-10px); color: #0984e3; }
+
+        /* === TIÊU ĐỀ TRANG === */
+        header { text-align: center; margin-bottom: 40px; }
+        
+        .category-badge {
+            background: linear-gradient(to right, #00cec9, #0984e3);
+            color: white; padding: 6px 25px; border-radius: 50px;
+            font-size: 12px; font-weight: 700; margin-bottom: 15px;
+            display: inline-block; box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
+            text-transform: uppercase;
+        }
+
+        header h1 { 
+            font-size: 40px; color: #2f3542; margin: 10px 0; 
+            background: linear-gradient(to right, #00b894, #0984e3);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .meta { color: #b2bec3; font-size: 14px; font-weight: 600; margin-bottom: 20px;}
+
+        /* === NỘI DUNG VĂN BẢN === */
+        .content-paragraph { 
+            font-size: 18px; margin-bottom: 25px; 
+            text-align: justify; color: #4b6584;
+        }
+        
+        .highlight-list {
+            background: #f1f8ff; border-left: 5px solid #0984e3;
+            padding: 20px 25px; border-radius: 0 15px 15px 0;
+            margin-bottom: 30px; list-style-type: none;
+        }
+        .highlight-list li { margin-bottom: 10px; font-size: 17px; color: #2c3e50; font-weight: 600; }
+
+        /* === BẢNG VÀNG THI ĐUA (GRID CÁC LỚP) === */
+        .ranking-title { text-align: center; color: #d63031; font-size: 26px; margin: 40px 0 20px; }
+        
+        .ranking-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;
+        }
+        
+        .rank-card {
+            background: white; border-radius: 20px; padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border-top: 5px solid #00b894; transition: 0.3s;
+        }
+        .rank-card:nth-child(even) { border-top-color: #fdcb6e; }
+        .rank-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        
+        .rank-card h3 { color: #2d3436; margin-top: 0; text-align: center; border-bottom: 1px dashed #dfe6e9; padding-bottom: 10px;}
+        
+        .rank-group { margin-bottom: 15px; }
+        .rank-group h4 { color: #0984e3; margin: 10px 0 5px; font-size: 16px; text-transform: uppercase;}
+        .rank-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-weight: 600; color: #636e72; }
+        
+        .medal-1 { color: #f1c40f; font-size: 20px;} /* Vàng */
+        .medal-2 { color: #bdc3c7; font-size: 20px;} /* Bạc */
+        .medal-3 { color: #cd6133; font-size: 20px;} /* Đồng */
+
+        /* === HÌNH ẢNH === */
+        .photo-block { margin: 30px 0; text-align: center; }
+        .photo-block img { width: 100%; border-radius: 20px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        
+        .photo-gallery {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 40px 0;
+        }
+        .photo-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: 0.3s;}
+        .photo-gallery img:hover { transform: scale(1.03); cursor: zoom-in; }
+
+        .caption { 
+            display: inline-block; margin-top: 15px; font-size: 14px; 
+            color: #7f8c8d; font-style: italic; background: #f1f2f6;
+            padding: 5px 20px; border-radius: 20px;
+        }
+
+        .end-mark { text-align: center; margin: 50px 0 20px; color: #00cec9; font-size: 24px; letter-spacing: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="3-Hoat-dong.html" class="btn-back">← QUAY LẠI TRANG HOẠT ĐỘNG</a>
+
+        <header>
+            <span class="category-badge">SỰ KIỆN NỔI BẬT</span>
+            <h1>Sinh Hoạt Dưới Cờ Tuần 24</h1>
+            <div class="meta">Bản tin: Ban Giám Hiệu | Khởi động tuần mới đầy năng lượng</div>
+        </header>
+
+        <section class="photo-block">
+            <div>
+            <img src="img/chao-co-tuan24-1.jpg" alt="Lễ trao cờ thi đua">
+                <h2 caclass="caption">Trao cờ thi đua</h2>
+            <span class="caption">Ban Giám hiệu trao cờ thi đua cho các tập thể lớp xuất sắc tuần 23.</span>
+        </section>
+
+        <div class="content-paragraph">
+            Sáng thứ Hai, Trường THPT Khánh Lâm đã tổ chức buổi sinh hoạt dưới cờ tuần 24 với sự tham dự của Ban Giám hiệu nhà trường, các thầy cô giáo chủ nhiệm và toàn thể học sinh ba khối 10, 11, 12. Tại buổi sinh hoạt, nhà trường đã tiến hành tổng kết, đánh giá các hoạt động nổi bật trong tháng 02, ghi nhận hàng loạt "cơn mưa" thành tích rực rỡ từ thầy và trò:
+        </div>
+
+        <ul class="highlight-list">
+            <li>🔬 Tổ chức thành công chuyên đề STEAM của Tổ Hóa – Sinh.</li>
+            <li>🏐 Giao lưu Bóng chuyền chào mừng Ngày hội Biên phòng toàn dân đoạt <strong>Giải Nhất</strong>.</li>
+            <li>🗣️ Tham gia cuộc thi Hùng biện Tiếng Anh lần thứ IV cấp tỉnh đoạt <strong>Giải Nhất</strong>.</li>
+            <li>📰 Tham gia Báo Xuân – Báo tường học đường đoạt <strong>Giải C cấp tỉnh</strong>.</li>
+            <li>📚 Tiếp tục duy trì hiệu quả và đẩy mạnh công tác ôn luyện Học sinh giỏi.</li>
+        </ul>
+
+        <h2 class="ranking-title">🏆 KẾT QUẢ THI ĐUA TUẦN 23 🏆</h2>
+        <div class="ranking-grid">
+            
+            <div class="rank-card">
+                <h3>Khối 10</h3>
+                <div class="rank-group">
+                    <h4>Ban Khoa học Tự nhiên</h4>
+                    <div class="rank-item"><span class="medal-1">🥇</span> Hạng Nhất: <strong>Lớp 10T1</strong></div>
+                    <div class="rank-item"><span class="medal-2">🥈</span> Hạng Nhì: <strong>Lớp 10T4</strong></div>
+                </div>
+                <div class="rank-group">
+                    <h4>Ban Khoa học Xã hội</h4>
+                    <div class="rank-item"><span class="medal-1">🥇</span> Hạng Nhất: <strong>Lớp 10X2</strong></div>
+                    <div class="rank-item"><span class="medal-2">🥈</span> Hạng Nhì: <strong>Lớp 10X3</strong></div>
+                </div>
+            </div>
+
+            <div class="rank-card">
+                <h3>Khối 11 - 12</h3>
+                <div class="rank-group">
+                    <h4>Ban Khoa học Tự nhiên</h4>
+                    <div class="rank-item"><span class="medal-1">🥇</span> Hạng Nhất: <strong>Lớp 11T4</strong></div>
+                    <div class="rank-item"><span class="medal-2">🥈</span> Hạng Nhì: <strong>Lớp 12T1</strong></div>
+                    <div class="rank-item"><span class="medal-3">🥉</span> Hạng Ba: <strong>Lớp 11T2</strong></div>
+                </div>
+                <div class="rank-group">
+                    <h4>Ban Khoa học Xã hội</h4>
+                    <div class="rank-item"><span class="medal-1">🥇</span> Hạng Nhất: <strong>Lớp 11X5</strong></div>
+                    <div class="rank-item"><span class="medal-2">🥈</span> Hạng Nhì: <strong>Lớp 12X3</strong></div>
+                    <div class="rank-item"><span class="medal-3">🥉</span> Hạng Ba: <strong>Lớp 12X1</strong></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-paragraph">
+            Bên cạnh đó, buổi sinh hoạt cũng triển khai quyết định khen thưởng các tập thể, cá nhân đoạt giải trong chuyên đề STEAM của Tổ Hóa – Sinh, góp phần khích lệ tinh thần sáng tạo, đam mê nghiên cứu khoa học trong học sinh. 
+        </div>
+
+        <div class="photo-gallery">
+            <img src="img/chao-co-tuan24-2.jpg" alt="Trao thưởng 1">
+            <img src="img/chao-co-tuan24-3.jpg" alt="Trao thưởng 2">
+            <img src="img/chao-co-tuan24-4.jpg" alt="Trao thưởng 3">
+            <img src="img/chao-co-tuan24-5.jpg" alt="Trao thưởng 4">
+            <img src="img/chao-co-tuan24-6.jpg" alt="Trao thưởng 5">
+        </div>
+        <div style="text-align: center; margin-bottom: 30px;"><span class="caption">Những gương mặt rạng rỡ của các bạn học sinh khi được vinh danh trên bục danh dự.</span></div>
+
+        <div class="content-paragraph">
+            Thông qua buổi sinh hoạt dưới cờ, Ban Giám hiệu nhà trường tiếp tục nhấn mạnh việc giữ gìn nề nếp, kỷ cương học đường, phát huy phong trào thi đua "Dạy tốt – Học tốt" và định hướng các nhiệm vụ trọng tâm trong thời gian tới. Buổi sinh hoạt diễn ra vô cùng nghiêm túc, ý nghĩa, tạo động lực to lớn để thầy và trò toàn trường tiếp tục nỗ lực phấn đấu hoàn thành xuất sắc nhiệm vụ năm học 2025–2026.
+        </div>
+
+        <div class="end-mark">🌟 🏫 🌟</div>
+        <p style="text-align: center; color: #bdc3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">-- THPT Khánh Lâm: Khát vọng vươn xa --</p>
+    </div>
+
+</body>
+</html>

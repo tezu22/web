@@ -2,196 +2,216 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Bóng Chuyền THPT Khánh Lâm - Rực Lửa Đam Mê</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Hoạt động 26/3 - THPT Khánh Lâm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* === 1. CÀI ĐẶT NỀN LUNG LINH === */
+        /* === NỀN VÀ KHUNG CHUNG === */
         body { 
-            margin: 0; 
-            font-family: 'Quicksand', sans-serif; 
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%); 
-            color: #2d3436; 
-            line-height: 1.8; 
+            margin: 0; font-family: 'Quicksand', sans-serif; 
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); 
+            color: #2d3436; line-height: 1.8; 
         }
 
-        /* Hiệu ứng hiện dần khi load trang */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .container { 
-            width: 85%; 
-            max-width: 1000px; 
-            margin: 40px auto; 
-            background: rgba(255, 255, 255, 0.9); 
-            padding: 50px; 
-            border-radius: 30px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px);
-            animation: fadeUp 1s ease-out;
+            width: 85%; max-width: 1000px; margin: 40px auto; 
+            background: rgba(255, 255, 255, 0.95); padding: 50px; 
+            border-radius: 30px; box-shadow: 0 20px 60px rgba(0, 206, 201, 0.15);
+            backdrop-filter: blur(15px); animation: fadeUp 1s ease-out;
         }
 
-        /* === 2. NÚT QUAY LẠI CÁCH ĐIỆU === */
+        /* Nút quay lại */
         .btn-back { 
-            display: inline-block; 
-            margin-bottom: 20px; 
-            color: #ff4757; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            display: inline-block; margin-bottom: 20px; color: #00cec9; 
+            text-decoration: none; font-weight: 700; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
         }
-        .btn-back:hover { transform: translateX(-10px); color: #2f3542; }
+        .btn-back:hover { transform: translateX(-10px); color: #0984e3; }
 
-        /* === 3. HEADER NỔI BẬT === */
-        header { text-align: center; margin-bottom: 60px; }
+        /* === TIÊU ĐỀ TRANG === */
+        header { text-align: center; margin-bottom: 40px; }
         
         .category-badge {
-            background: #ff4757;
-            color: white;
-            padding: 5px 20px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: inline-block;
+            background: linear-gradient(to right, #00cec9, #0984e3); color: white; 
+            padding: 6px 25px; border-radius: 50px; font-size: 13px; 
+            font-weight: 700; margin-bottom: 15px; display: inline-block; 
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3); text-transform: uppercase;
         }
 
         header h1 { 
-            font-family: 'Quicksand', sans-serif;
-            font-size: 48px; 
-            color: #2f3542; 
-            margin: 10px 0; 
-            background: linear-gradient(to right, #ff4757, #ffa502);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 40px; color: #2f3542; margin: 10px 0; 
+            background: linear-gradient(to right, #00b894, #0984e3);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        
-        .meta { color: #a4b0be; font-size: 14px; font-weight: 600; }
+        .meta { color: #b2bec3; font-size: 14px; font-weight: 600; margin-bottom: 20px;}
 
-        /* === 4. ĐOẠN VĂN VÀ HÌNH ẢNH LUNG LINH === */
-        .intro-text { 
-            font-family: 'Dancing Script', cursive;
-            font-size: 28px; 
-            color: #57606f; 
-            text-align: center; 
-            margin: 40px 0;
-            position: relative;
-        }
-        
-        .intro-text::before, .intro-text::after {
-            content: "“";
-            font-size: 50px;
-            color: #ff4757;
-            opacity: 0.3;
-        }
-
+        /* === NỘI DUNG VĂN BẢN === */
         .content-paragraph { 
-            font-size: 18px; 
-            margin-bottom: 30px; 
-            text-align: justify; 
-            color: #4b6584;
+            font-size: 18px; margin-bottom: 25px; text-align: justify; color: #4b6584;
         }
 
-        /* Khung ảnh nghệ thuật */
-        .photo-block { 
-            margin: 50px 0; 
-            text-align: center; 
-            transition: 0.5s;
-        }
+        /* === HÌNH ẢNH === */
+        .photo-block { margin: 30px 0; text-align: center; }
+        .photo-block img { width: 100%; border-radius: 20px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
         
-        .photo-block img { 
-            width: 100%; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(255, 71, 87, 0.2); 
-            transition: 0.5s;
-        }
+        .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .photo-grid img { width: 100%; height: 280px; object-fit: cover; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         
-        .photo-block:hover img {
-            transform: scale(1.02);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
         .caption { 
-            display: block; 
-            margin-top: 15px; 
-            font-size: 14px; 
-            color: #747d8c; 
-            font-style: italic;
+            display: inline-block; margin-top: 15px; font-size: 14px; 
+            color: #7f8c8d; font-style: italic; background: #f1f2f6;
+            padding: 5px 20px; border-radius: 20px;
         }
 
-        /* Grid ảnh phong cách ngẫu nhiên */
-        .photo-grid { 
-            display: grid;
-            grid-template-columns: 1.5fr 1fr; /* Một to một nhỏ */
-            gap: 20px; 
-            margin: 50px 0; 
-        }
+        /* === BẢNG KẾT QUẢ BÓNG CHUYỀN === */
+        .tournament-title { text-align: center; color: #d35400; font-size: 28px; margin: 50px 0 20px; text-transform: uppercase;}
         
-        .photo-grid img { 
-            width: 100%; 
-            height: 400px; 
-            object-fit: cover; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        .results-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;
         }
 
-        /* === 5. KẾT BÀI === */
-        .end-mark { 
-            text-align: center; 
-            margin: 80px 0 20px; 
-            color: #ff4757; 
-            font-size: 30px;
-            letter-spacing: 5px;
-        }
+        .result-col { background: #f8fbfc; border-radius: 20px; padding: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); border: 1px solid #e1e8ed;}
+        .result-col.male { border-top: 5px solid #0984e3; }
+        .result-col.female { border-top: 5px solid #e84393; }
+
+        .gender-title { text-align: center; font-size: 22px; margin-top: 0; padding-bottom: 10px; border-bottom: 2px dashed #dfe6e9;}
+        .male .gender-title { color: #0984e3; }
+        .female .gender-title { color: #e84393; }
+
+        .grade-block { margin-bottom: 20px; }
+        .grade-block h4 { background: #dfe6e9; display: inline-block; padding: 5px 15px; border-radius: 15px; font-size: 15px; color: #2d3436; margin-bottom: 10px;}
+        
+        .win-list { list-style: none; padding: 0; margin: 0; }
+        .win-list li { margin-bottom: 8px; font-weight: 600; color: #636e72; display: flex; align-items: center; gap: 10px;}
+        
+        .medal-1 { color: #f1c40f; font-size: 18px;}
+        .medal-2 { color: #bdc3c7; font-size: 18px;}
+        .medal-3 { color: #d35400; font-size: 18px;}
+
+        .highlight-class { background: #ffeaa7; color: #d35400; padding: 2px 10px; border-radius: 10px; border: 1px solid #fdcb6e;}
+
+        .end-mark { text-align: center; margin: 50px 0 20px; color: #0984e3; font-size: 28px; letter-spacing: 10px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <a href="Hoat-dong.html" class="btn-back">← TRANG HOẠT ĐỘNG</a>
+        <a href="3-Hoat-dong.html" class="btn-back">← QUAY LẠI TRANG HOẠT ĐỘNG</a>
 
         <header>
-            <span class="category-badge">THỂ THAO HỌC ĐƯỜNG</span>
-            <h1>Sức Trẻ Dưới Lưới Cao</h1>
-            <div class="meta">Bản tin: Tổ Thể Dục | Cập nhật ngày: 01/03/2026</div>
+            <span class="category-badge">ĐOÀN THANH NIÊN</span>
+            <h1>Sôi Nổi Chuỗi Hoạt Động Chào Mừng 26/3</h1>
+            <div class="meta">Bản tin: Đoàn Trường | Tháng Thanh Niên rực rỡ</div>
         </header>
 
-        <p class="intro-text">Cháy hết mình với những pha bóng, để thanh xuân không chỉ là những trang sách, mà còn là nhịp đập rộn ràng nơi sân đấu.</p>
+        <div class="content-paragraph">
+            Ngày 26/3 hàng năm là dịp để các đoàn viên thanh niên cả nước kỷ niệm Ngày Thành lập Đoàn TNCS Hồ Chí Minh – một ngày quan trọng đánh dấu sự ra đời của tổ chức thanh niên lớn mạnh. Đây cũng là dịp để các bạn trẻ ôn lại truyền thống vẻ vang, khơi dậy lòng nhiệt huyết và tinh thần cống hiến. Hòa chung không khí đó, Đoàn trường THPT Khánh Lâm đã tổ chức nhiều phong trào tạo nên bầu không khí sôi nổi, vui tươi và đầy ý nghĩa.
+        </div>
 
         <section class="photo-block">
-            <img src="bong-chuyen-main.png" alt="Giải bóng chuyền">
-            <span class="caption">Toàn cảnh lễ khai mạc giải bóng chuyền nam nữ THPT Khánh Lâm 2026.</span>
+            <div>
+            <img src="img/bong-chuyen-4.jpg">
+                <h2 class="photo-caption">Khai mạc giải bóng chuyền</h2>
+            </div>
+            <span class="caption">Hàng trăm đoàn viên thanh niên các lớp tập trung đông đủ trong buổi lễ khai mạc giải thể thao.</span>
         </section>
 
         <div class="content-paragraph">
-            Tiếng còi khai cuộc vang lên cũng là lúc bầu không khí tại sân thể thao trường THPT Khánh Lâm bùng nổ. Dưới ánh nắng vàng rực rỡ, những chiến binh trẻ tuổi bước vào sân với ánh mắt rực lửa quyết tâm. Từng bước di chuyển, từng pha phối hợp đều mang theo hy vọng và niềm tự hào của cả một tập thể lớp.
+            Để tạo ra sân chơi bổ ích và thúc đẩy tinh thần thể thao, ngày 22 và 23/2, giải Bóng chuyền Nam - Nữ đã được tổ chức với sự tham gia nhiệt tình của học sinh cả 3 khối 10, 11 và 12. Giải đấu không chỉ là cơ hội để các bạn trẻ rèn luyện thể lực, mà còn là dịp để giao lưu, học hỏi và thắt chặt tình đoàn kết giữa các lớp.
         </div>
 
         <section class="photo-grid">
-            <img src="bong-chuyen-1.png" alt="Phối hợp đồng đội">
-            <img src="bong-chuyen-2.png" alt="Phòng thủ">
+            <div style="text-align: center;">
+                <img src="img/bong-chuyen-2.jpg" >
+                <span class="caption">Các thầy cô giáo chăm chú theo dõi từng đường bóng.</span>
+            </div>
+            <div style="text-align: center;">
+                <img src="img/bong-chuyen-1.jpg" >
+                <span class="caption">Những tràng pháo tay tiếp lửa cuồng nhiệt từ phía khán giả.</span>
+            </div>
         </section>
-        <p style="text-align: center; font-size: 14px; color: #888;">Sự phối hợp nhịp nhàng và những pha cứu bóng lăn xả đầy cảm xúc.</p>
+
+        <h2 class="tournament-title">🏆 Kết Quả Giải Bóng Chuyền 🏆</h2>
+        <div class="results-container">
+            
+            <div class="result-col male">
+                <h3 class="gender-title">🏐 BÓNG CHUYỀN NAM</h3>
+                
+                <div class="grade-block">
+                    <h4>Khối 10</h4>
+                    <ul class="win-list">
+                        <li><span class="medal-1">🥇</span> Giải Nhất: Lớp 10X1</li>
+                        <li><span class="medal-2">🥈</span> Giải Nhì: Lớp 10T3</li>
+                        <li><span class="medal-3">🥉</span> Giải Ba: Lớp 10X5</li>
+                    </ul>
+                </div>
+                <div class="grade-block">
+                    <h4>Khối 11</h4>
+                    <ul class="win-list">
+                        <li><span class="medal-1">🥇</span> Giải Nhất: Lớp 11T3</li>
+                        <li><span class="medal-2">🥈</span> Giải Nhì: Lớp 11T1</li>
+                        <li><span class="medal-3">🥉</span> Giải Ba: Lớp 11X2</li>
+                    </ul>
+                </div>
+                <div class="grade-block">
+                    <h4>Khối 12</h4>
+                    <ul class="win-list">
+                        <li><span class="medal-1">🥇</span> Giải Nhất: Lớp 12T4</li>
+                        <li><span class="medal-2">🥈</span> Giải Nhì: Lớp 12T1</li>
+                        <li><span class="medal-3">🥉</span> Giải Ba: Lớp 12X1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="result-col female">
+                <h3 class="gender-title">🏐 BÓNG CHUYỀN NỮ</h3>
+                
+                <div class="grade-block">
+                    <h4>Khối 10</h4>
+                    <ul class="win-list">
+                        <li><span class="medal-1">🥇</span> Giải Nhất: Lớp 10X4</li>
+                        <li><span class="medal-2">🥈</span> Giải Nhì: Lớp 10T3</li>
+                        <li><span class="medal-3">🥉</span> Giải Ba: Lớp 10X1</li>
+                    </ul>
+                </div>
+                <div class="grade-block">
+                    <h4>Khối 11</h4>
+                    <ul class="win-list">
+                        <li><span class="medal-1">🥇</span> Giải Nhất: Lớp 11X4</li>
+                        <li><span class="medal-2">🥈</span> Giải Nhì: Lớp 11X1</li>
+                        <li><span class="medal-3">🥉</span> Giải Ba: Lớp 11X2</li>
+                    </ul>
+                </div>
+                <div class="grade-block">
+                    <h4>Khối 12</h4>
+                    <ul class="win-list">
+                        <li><span class="medal-1">🥇</span> Giải Nhất: Lớp 12T4</li>
+                        <li><span class="medal-2">🥈</span> Giải Nhì: Lớp 12X4</li>
+                        <li><span class="medal-3">🥉</span> Giải Ba: Lớp 12T3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <div class="content-paragraph">
-            Chúng ta đã được chứng kiến những cú đập bóng uy lực xé tan hàng phòng ngự, những pha chắn bóng bền bỉ và cả những lần bay người cứu bóng không tưởng. Nhưng có lẽ, hình ảnh đẹp nhất không nằm ở điểm số, mà ở cái nắm tay thật chặt sau mỗi pha bóng hỏng, là những lời động viên "Cố lên, mình làm được!" vang vọng khắp sân trường.
+            Tiếp nối chuỗi hoạt động, với mục tiêu tạo không khí hào hứng và phát huy tinh thần sáng tạo, vào buổi chào cờ tuần 25, Đoàn trường cũng đã tổ chức một số trò chơi tập thể dành riêng cho khối 11. Thông qua các trò chơi, các bạn trẻ có cơ hội hiểu rõ hơn về giá trị của việc đồng lòng, hợp tác trong mọi hoàn cảnh – một phẩm chất vô cùng quan trọng trong cuộc sống.
         </div>
 
         <section class="photo-block">
-            <img src="bong-chuyen-an-mung.png" alt="Ăn mừng chiến thắng">
-            <span class="caption">Niềm vui vỡ òa khi giành được tấm vé vào vòng chung kết kịch tính.</span>
+            <div>
+            <img src="img/bong-chuyen-3.jpg" alt="Lễ Mít tinh và trao thưởng">
+                <h2 class="photo-caption">TRAO THƯỞNG</h2>
+            </div>
+           
+            <span class="caption">Đại diện các chi đoàn xuất sắc nhận giấy khen tại Lễ Mít tinh kỷ niệm 94 năm ngày thành lập Đoàn.</span>
         </section>
 
-        <div class="content-paragraph">
-            Khi những tia nắng cuối ngày dần tắt, giải đấu cũng khép lại với những giọt nước mắt và nụ cười. Dù thắng hay thua, mỗi học sinh đều đã chiến thắng chính bản thân mình, ghi lại một dấu ấn đậm nét trong hành trình trưởng thành dưới mái trường Khánh Lâm thân yêu. Hẹn gặp lại các bạn ở những mùa giải đầy đam mê phía trước!
-        </div>
-
-        <div class="end-mark">🏐 🏐 🏐</div>
-        <p style="text-align: center; color: #ced4da; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">-- Phóng sự được thực hiện bởi Toi --</p>
+        <div class="end-mark">🌟 🇻🇳 🌟</div>
+        <p style="text-align: center; color: #bdc3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">-- Tuổi trẻ THPT Khánh Lâm: Xung kích - Sáng tạo --</p>
     </div>
 
 </body>

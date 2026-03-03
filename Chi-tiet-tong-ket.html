@@ -9,7 +9,6 @@
         body { 
             margin: 0; 
             font-family: 'Quicksand', sans-serif; 
-            /* Gradient xanh lơ nhạt pha trắng tinh khôi */
             background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); 
             color: #2d3436; 
             line-height: 1.8; 
@@ -27,7 +26,7 @@
             background: rgba(255, 255, 255, 0.95); 
             padding: 50px; 
             border-radius: 30px; 
-            box-shadow: 0 20px 60px rgba(0, 206, 201, 0.15); /* Đổ bóng xanh lơ */
+            box-shadow: 0 20px 60px rgba(0, 206, 201, 0.15);
             backdrop-filter: blur(15px);
             animation: fadeUp 1s ease-out;
         }
@@ -36,7 +35,7 @@
         .btn-back { 
             display: inline-block; 
             margin-bottom: 20px; 
-            color: #00cec9; /* Xanh Turquoise */
+            color: #00cec9; 
             text-decoration: none; 
             font-weight: 700; 
             font-size: 14px;
@@ -47,7 +46,7 @@
         .btn-back:hover { transform: translateX(-10px); color: #0984e3; }
 
         /* === 3. HEADER VINH DANH === */
-        header { text-align: center; margin-bottom: 60px; }
+        header { text-align: center; margin-bottom: 30px; }
         
         .category-badge {
             background: linear-gradient(to right, #00cec9, #0984e3);
@@ -66,13 +65,12 @@
             font-size: 46px; 
             color: #2f3542; 
             margin: 10px 0; 
-            /* Gradient chữ Xanh Ngọc và Xanh Dương */
             background: linear-gradient(to right, #00b894, #0984e3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
-        .meta { color: #b2bec3; font-size: 14px; font-weight: 600; }
+        .meta { color: #b2bec3; font-size: 14px; font-weight: 600; margin-bottom: 40px;}
 
         /* === 4. NỘI DUNG VÀ HÌNH ẢNH === */
         .intro-text { 
@@ -82,6 +80,7 @@
             text-align: center; 
             margin: 40px 0;
             position: relative;
+            padding: 0 30px;
         }
         
         .intro-text::before, .intro-text::after {
@@ -98,30 +97,31 @@
             color: #4b6584;
         }
 
-        /* Khung ảnh chính */
-        .photo-block { 
-            margin: 50px 0; 
-            text-align: center; 
-        }
+        /* Khung ảnh chính và Grid ảnh (Bo tròn xịn) */
+        .photo-block, .photo-grid { margin: 50px 0; text-align: center; }
         
-        .photo-block img { 
+        .photo-block img, .photo-grid img { 
             width: 100%; 
             border-radius: 20px; 
             box-shadow: 0 15px 40px rgba(0, 206, 201, 0.15); 
             transition: 0.5s;
         }
         
-        .photo-block:hover img {
+        .photo-block:hover img, .photo-grid img:hover {
             transform: scale(1.02);
             box-shadow: 0 25px 60px rgba(9, 132, 227, 0.2);
         }
 
+        /* Chú thích ảnh */
         .caption { 
-            display: block; 
+            display: inline-block; 
             margin-top: 15px; 
             font-size: 14px; 
             color: #7f8c8d; 
             font-style: italic;
+            background: #f1f2f6;
+            padding: 5px 20px;
+            border-radius: 20px;
         }
 
         /* Grid ảnh 2 cột */
@@ -129,15 +129,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 25px; 
-            margin: 50px 0; 
+            margin-bottom: 15px;
         }
         
         .photo-grid img { 
-            width: 100%; 
             height: 350px; 
             object-fit: cover; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
 
         /* === 5. KẾT BÀI === */
@@ -153,7 +150,7 @@
 <body>
 
     <div class="container">
-        <a href="Hoat-dong.html" class="btn-back">← QUAY LẠI TRANG HOẠT ĐỘNG</a>
+        <a href="3-Hoat-dong.html" class="btn-back">← QUAY LẠI TRANG HOẠT ĐỘNG</a>
 
         <header>
             <span class="category-badge">BẢNG VÀNG THÀNH TÍCH</span>
@@ -161,39 +158,41 @@
             <div class="meta">Bản tin: Ban Giám Hiệu | Khép lại năm học 2025-2026</div>
         </header>
 
-        <p class="intro-text">Những tiếng ve kêu râm ran báo hiệu một mùa hè nữa lại về. Lễ tổng kết không chỉ là nốt nhạc vui mừng khép lại một năm học nỗ lực, mà còn là nốt trầm xao xuyến của khúc ca chia tay tuổi học trò.</p>
+        <div class="content-paragraph">
+            Những tiếng ve râm ran kêu gọi mùa hè về cũng là lúc tiếng trống trường THPT Khánh Lâm vang lên nốt nhạc cuối cùng của năm học. Sáng hôm nay, toàn thể thầy và trò nhà trường đã cùng tụ hội về đây để long trọng tổ chức lễ Tổng kết năm học. Đây không chỉ là một nốt nhạc vui mừng khép lại chặng đường nỗ lực miệt mài 9 tháng qua, mà còn là nốt trầm xao xuyến, khắc cốt ghi tâm của khúc ca chia tay tuổi học trò đầy mộng mơ.
+        </div>
 
         <section class="photo-block">
-            <img src="tong-ket-main.jpg" alt="Toàn cảnh lễ tổng kết">
-            <span class="caption">Sân trường THPT Khánh Lâm rợp bóng cây và rực rỡ sắc màu trong buổi lễ Tổng kết năm học.</span>
+            <img src="img/tong-ket-1.png" alt="Toàn cảnh lễ tổng kết">
+            <span class="caption">Trường THPT Khánh Lâm rợp bóng cây và rực rỡ cờ hoa trong ngày Lễ Tổng kết long trọng.</span>
         </section>
 
+        <p class="intro-text">"Những dòng lưu bút nắn nót viết vội lên tà áo trắng, và cả những lời cảm ơn chưa kịp nói thành lời..."</p>
+
         <div class="content-paragraph">
-            Sáng ngày cuối tháng 5, không khí tại trường THPT Khánh Lâm diễn ra vô cùng long trọng nhưng cũng đầy ấm áp. Nhìn lại chặng đường 9 tháng miệt mài, thầy và trò nhà trường có quyền tự hào về những "quả ngọt" đã gặt hái được. Dù trải qua nhiều thử thách, nhưng với sự tận tâm của đội ngũ giáo viên và sự nỗ lực không ngừng của các em học sinh, nhà trường đã hoàn thành xuất sắc nhiệm vụ năm học.
+            Nhìn lại chặng đường đã qua, thầy và trò nhà trường có quyền tự hào về những "quả ngọt" đã gặt hái được. Dù trải qua nhiều thử thách, nhưng với sự tận tâm của đội ngũ giáo viên và sự nỗ lực không ngừng của các em học sinh, nhà trường đã hoàn thành xuất sắc nhiệm vụ năm học. Phần được mong chờ nhất chính là khoảnh khắc vinh danh những cá nhân và tập thể xuất sắc. Nụ cười rạng rỡ của các em trên bục danh dự là minh chứng rõ nét nhất cho chất lượng giáo dục của mái trường Khánh Lâm.
         </div>
 
         <section class="photo-grid">
-            <img src="khen-thuong.jpg" alt="Trao giấy khen">
-            <img src="vinh-danh.jpg" alt="Học sinh giỏi">
+            <div><img src="img/tong-ket-3.png">
+                <h2 class="photo-caption">Trao giấy khen<h2></div>
+            <div><img src="img/tong-ket-2.png">
+                <h2 class="photo-caption">Học sinh giỏi </h2></div>
         </section>
-        <p style="text-align: center; font-size: 14px; color: #7f8c8d;">Khoảnh khắc vinh danh những cá nhân và tập thể xuất sắc trên bục danh dự.</p>
+        <div style="text-align: center; margin-bottom: 50px;"><span class="caption">Những tờ giấy khen chứa đựng sự ghi nhận to lớn cho nỗ lực phấn đấu không mệt mỏi.</span></div>
 
         <div class="content-paragraph">
-            Phần được mong chờ nhất chính là khoảnh khắc trao thưởng. Những tờ giấy khen, những phần thưởng tuy nhỏ nhưng chứa đựng sự ghi nhận to lớn cho sự phấn đấu không mệt mỏi. Nụ cười rạng rỡ của các em trên bục danh dự, ánh mắt tự hào của thầy cô chính là minh chứng rõ nét nhất cho chất lượng giáo dục của mái trường Khánh Lâm.
+            Thế nhưng, xen lẫn niềm vui thành tích là những nốt trầm nghẹn ngào của buổi chia tay, đặc biệt là với các anh chị khối 12. <i>"Hôm nay là ngày cuối cùng chúng mình được làm học sinh THPT Khánh Lâm"</i>. Giây phút nhìn lại chặng đường nỗ lực với bảng vàng thành tích cũng là giây phút xao xuyến chia tay mái trường, thầy cô và bạn bè. Những cái ôm siết chặt, những giọt nước mắt nghẹn ngào lưu luyến. Thanh xuân tại Khánh Lâm khép lại, nhưng hành trang kiến thức và tình yêu thương nơi đây sẽ mãi theo các em trên mọi nẻo đường tương lai.
         </div>
 
         <section class="photo-block">
-            <img src="chia-tay-12.jpg" alt="Lễ tri ân khối 12">
-            <span class="caption">Những giọt nước mắt nghẹn ngào và cái ôm siết chặt của các bạn học sinh khối 12.</span>
+            <img src="images/chia-tay-12.jpg" alt="Lễ tri ân khối 12">
+            <span class="caption">Giây phút chia tay xao xuyến, khắc cốt ghi tâm của khúc ca tuổi học trò rực rỡ.</span>
         </section>
-
-        <div class="content-paragraph">
-            Thế nhưng, xen lẫn niềm vui thành tích là những giọt nước mắt nghẹn ngào của các anh chị khối 12. <i>"Hôm nay là ngày cuối cùng chúng mình được làm học sinh"</i>. Những cái ôm siết chặt, những dòng lưu bút nắn nót viết vội lên tà áo trắng, và cả những lời cảm ơn, xin lỗi chưa kịp nói thành lời với thầy cô. Thanh xuân tại Khánh Lâm khép lại, nhưng hành trang kiến thức và tình yêu thương nơi đây sẽ mãi theo các em trên mọi nẻo đường tương lai.
-        </div>
 
         <div class="end-mark">🎓 💐 📜</div>
         <p style="text-align: center; color: #bdc3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 3px;">-- Tạm biệt năm học đáng nhớ --</p>
     </div>
-
+    
 </body>
 </html>
